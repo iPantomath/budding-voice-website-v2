@@ -1,3 +1,2 @@
-// Layout components will be exported here
-// Example: export { Navbar } from './Navbar';
-// Example: export { Footer } from './Footer';
+export { Navbar, type NavbarProps } from "./Navbar";
+export { Footer, type FooterProps } from "./Footer";

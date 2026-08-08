@@ -3,10 +3,13 @@
 //
 // Usage:
 //   import { Button, Card } from '@/components';
-//   import { ProgrammeCard } from '@/components/cards';
+//   import { Navbar } from '@/components/layout';
+
+// UI Components
+export * from "./ui";
 
 // Layout Components
-// export * from "./layout";
+export * from "./layout";
 
 // Navigation Components
 // export * from "./navigation";
