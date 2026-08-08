@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "ui-ux-reviewer": {
+      "source": "arjenschwarz/agentic-coding",
+      "sourceType": "github",
+      "skillPath": "claude/skills/ui-ux-reviewer/SKILL.md",
+      "computedHash": "b41eba015ca26ac1fa4c0068232760a37cc2f564fd9d07b914e37e98705d793b"
+    }
+  }
+}
