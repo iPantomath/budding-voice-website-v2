@@ -1,17 +1,18 @@
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[+]?\d{0,3}[-.(]?[0-9]{3}[-).]?[0-9]{3}[-.]?[0-9]{4,6}$/;
+
 /**
  * Validate email format
  */
 export function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+  return EMAIL_REGEX.test(email);
 }
 
 /**
  * Validate phone number format (basic international format)
  */
 export function isValidPhone(phone: string): boolean {
-  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
-  return phoneRegex.test(phone.replace(/\s/g, ""));
+  return PHONE_REGEX.test(phone.replace(/\s/g, ""));
 }
 
 /**

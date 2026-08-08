@@ -1,14 +1,14 @@
 import { generatePageMetadata, generateStructuredData } from "@/lib/metadata";
+import { z } from "zod";
 
 describe("generatePageMetadata", () => {
   it("generates valid metadata with required fields", () => {
     const meta = generatePageMetadata({
       title: "About Us",
-      description: "Learn more about Budding Voice and our mission to help children grow.",
+      description: "Learn more about Budding Voice and our mission to help children grow with confidence and discover their unique voice through our programs.",
     });
 
     expect(meta.title).toBe("About Us | Budding Voice");
-    expect(meta.description).toBe("Learn more about Budding Voice and our mission to help children grow.");
     expect(meta.keywords).toContain("communication");
     expect(meta.keywords).toContain("leadership");
   });
@@ -16,7 +16,7 @@ describe("generatePageMetadata", () => {
   it("generates correct canonical URL with path", () => {
     const meta = generatePageMetadata({
       title: "Programmes",
-      description: "Explore our communication and leadership programmes designed for all ages.",
+      description: "Explore our communication and leadership programmes designed for all ages and skill levels with personalized guidance and support.",
       path: "/programmes",
     });
 
@@ -26,7 +26,7 @@ describe("generatePageMetadata", () => {
   it("generates Open Graph metadata with image", () => {
     const meta = generatePageMetadata({
       title: "Home",
-      description: "Welcome to Budding Voice, a Communication & Leadership Centre.",
+      description: "Welcome to Budding Voice, a Communication & Leadership Centre helping children discover their voice and grow with confidence and purpose.",
       image: "https://budding-voice.com/og-home.png",
     });
 
@@ -35,58 +35,58 @@ describe("generatePageMetadata", () => {
     ]);
   });
 
-  it("throws error if title is too long", () => {
+  it("throws Zod error if title is too long", () => {
     expect(() => {
       generatePageMetadata({
         title: "a".repeat(100),
-        description: "Valid description that is between 120 and 160 characters for SEO purposes.",
+        description: "Valid description that is between 120 and 160 characters for SEO purposes and quality content for our communication centre.",
       });
-    }).toThrow("Title exceeds 60 characters");
+    }).toThrow(z.ZodError);
   });
 
-  it("throws error if description is too short", () => {
+  it("throws Zod error if description is too short", () => {
     expect(() => {
       generatePageMetadata({
         title: "Page",
         description: "Too short",
       });
-    }).toThrow("Description must be 120-160 characters");
+    }).toThrow(z.ZodError);
   });
 
-  it("throws error if description contains HTML", () => {
+  it("throws Zod error if description contains HTML", () => {
     expect(() => {
       generatePageMetadata({
         title: "Page",
         description:
-          "This is a valid description that contains HTML tags <script>alert(1)</script> somewhere.",
+          "This is a valid description that contains HTML tags <script>alert(1)</script> somewhere here and everywhere now for testing purposes.",
       });
-    }).toThrow("Description cannot contain HTML tags");
+    }).toThrow(z.ZodError);
   });
 
-  it("throws error if path contains traversal", () => {
+  it("throws Zod error if path contains traversal", () => {
     expect(() => {
       generatePageMetadata({
         title: "Page",
-        description: "This is a valid description between 120 and 160 characters for SEO tests.",
+        description: "This is a valid description with exactly the right length of characters for SEO tests and quality assurance.",
         path: "/../admin",
       });
-    }).toThrow("Path must start with");
+    }).toThrow(z.ZodError);
   });
 
-  it("throws error if image is not a valid URL", () => {
+  it("throws Zod error if image is not a valid URL", () => {
     expect(() => {
       generatePageMetadata({
         title: "Page",
-        description: "This is a valid description between 120 and 160 characters for SEO tests.",
+        description: "This is a valid description with exactly the right length of characters for SEO tests and quality assurance.",
         image: "not-a-url",
       });
-    }).toThrow("Invalid image URL");
+    }).toThrow(z.ZodError);
   });
 
   it("handles optional fields gracefully", () => {
     const meta = generatePageMetadata({
       title: "Home",
-      description: "Welcome to Budding Voice, a Communication & Leadership Centre for children.",
+      description: "Welcome to Budding Voice, a Communication & Leadership Centre helping children discover their voice and develop confidence.",
     });
 
     expect(meta.openGraph?.images).toEqual([]);
@@ -140,5 +140,45 @@ describe("generateStructuredData", () => {
 
     const result = generateStructuredData(data);
     expect(JSON.parse(result.__html)).toEqual(data);
+  });
+
+  it("throws error on nested objects with functions", () => {
+    expect(() => {
+      generateStructuredData({
+        name: "Test",
+        callback: () => {}, // Functions not allowed
+      } as Record<string, unknown>);
+    }).toThrow("invalid types");
+  });
+
+  it("handles deeply nested structures", () => {
+    const data = {
+      level1: {
+        level2: {
+          level3: {
+            value: "deep value",
+          },
+        },
+      },
+    };
+
+    const result = generateStructuredData(data);
+    expect(JSON.parse(result.__html)).toEqual(data);
+  });
+
+  it("handles null and undefined in nested structures", () => {
+    const data = {
+      name: "Test",
+      nullable: null,
+      nested: {
+        value: "test",
+      },
+    };
+
+    const result = generateStructuredData(data);
+    const parsed = JSON.parse(result.__html);
+    expect(parsed.name).toBe("Test");
+    expect(parsed.nullable).toBeNull();
+    expect(parsed.nested.value).toBe("test");
   });
 });

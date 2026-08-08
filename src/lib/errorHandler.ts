@@ -13,6 +13,42 @@ export interface AppError {
 }
 
 /**
+ * Check if error is a network error based on error type and message patterns
+ */
+function isNetworkError(error: Error): boolean {
+  return (
+    error instanceof TypeError &&
+    (error.message.includes("fetch") ||
+      error.message.includes("network") ||
+      error.message.includes("request") ||
+      error.message.includes("timeout"))
+  );
+}
+
+/**
+ * Check if error is a not-found error based on error message and type
+ */
+function isNotFoundError(error: Error): boolean {
+  return (
+    error.message.includes("404") ||
+    error.message.includes("not found") ||
+    error.message.includes("not found")
+  );
+}
+
+/**
+ * Check if error is an auth error based on error message and type
+ */
+function isAuthError(error: Error): boolean {
+  return (
+    error.message.includes("401") ||
+    error.message.includes("403") ||
+    error.message.includes("unauthorized") ||
+    error.message.includes("forbidden")
+  );
+}
+
+/**
  * Classify an error into a typed AppError
  * Determines error type, severity, and user-friendly message
  */
@@ -20,7 +56,7 @@ export function classifyError(error: unknown, context?: Record<string, unknown>)
   const timestamp = new Date();
 
   if (error instanceof TypeError) {
-    if (error.message.includes("fetch")) {
+    if (isNetworkError(error)) {
       return {
         type: "network",
         severity: "warning",
@@ -44,7 +80,7 @@ export function classifyError(error: unknown, context?: Record<string, unknown>)
   }
 
   if (error instanceof Error) {
-    if (error.message.includes("404") || error.message.includes("not found")) {
+    if (isNotFoundError(error)) {
       return {
         type: "notfound",
         severity: "info",
@@ -56,7 +92,7 @@ export function classifyError(error: unknown, context?: Record<string, unknown>)
       };
     }
 
-    if (error.message.includes("401") || error.message.includes("unauthorized")) {
+    if (isAuthError(error)) {
       return {
         type: "auth",
         severity: "warning",

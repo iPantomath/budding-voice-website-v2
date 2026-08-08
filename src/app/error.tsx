@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { classifyError, logError } from "@/lib/errorHandler";
+import { UI_COLORS } from "@/constants";
 
 export default function Error({
   error,
@@ -38,7 +39,7 @@ export default function Error({
 
         <button
           onClick={reset}
-          className="inline-block rounded-lg bg-orange px-6 py-3 font-semibold text-white transition-colors hover:bg-opacity-90"
+          className={`inline-block rounded-lg bg-${UI_COLORS.primary} px-6 py-3 font-semibold text-white transition-colors hover:bg-opacity-90`}
         >
           Try Again
         </button>

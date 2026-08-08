@@ -17,13 +17,18 @@ export interface APIResponse<T> {
  * Currently uses static content constants.
  * When CMS integration happens, replace data sources without changing client code.
  *
+ * TODO: Phase 3 CMS Integration
+ * - Replace constant returns with actual API calls
+ * - Implement fetch() method with baseUrl and apiVersion
+ * - Add retry logic and caching strategy
+ * - Add error recovery and fallback mechanisms
+ *
  * Usage:
  *   const api = new BuddingVoiceAPI();
  *   const programmes = await api.getProgrammes();
  */
 export class BuddingVoiceAPI {
   private baseUrl: string;
-  private apiVersion: string = "v1";
 
   constructor() {
     this.baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.buddingvoice.com";
@@ -69,7 +74,7 @@ export class BuddingVoiceAPI {
    */
   async getTestimonialsByProgramme(programmeId: string): Promise<Testimonial[]> {
     return Promise.resolve(
-      TESTIMONIALS.filter((t) => t.id.includes(programmeId) || TESTIMONIALS.includes(t))
+      TESTIMONIALS.filter((t) => t.id.includes(programmeId))
     );
   }
 
@@ -115,27 +120,6 @@ export class BuddingVoiceAPI {
     }
   }
 
-  /**
-   * Generic fetch method for future extensibility
-   * CMS: Replace this implementation to call external API
-   */
-  private async fetch<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    const url = `${this.baseUrl}/${this.apiVersion}${endpoint}`;
-
-    const response = await fetch(url, {
-      headers: {
-        "Content-Type": "application/json",
-        ...options?.headers,
-      },
-      ...options,
-    });
-
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status} ${response.statusText}`);
-    }
-
-    return response.json();
-  }
 }
 
 /**

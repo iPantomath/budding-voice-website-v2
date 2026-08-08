@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE_CONFIG } from "@/constants";
+import { z } from "zod";
 
 interface PageMetadataProps {
   title: string;
@@ -9,58 +10,39 @@ interface PageMetadataProps {
   image?: string;
 }
 
+const NO_HTML_REGEX = /<[^>]*>/;
+
+const MetadataSchema = z.object({
+  title: z
+    .string()
+    .min(1, "Title is required and cannot be empty")
+    .max(60, "Title exceeds 60 characters (max for SEO)")
+    .refine((val) => !NO_HTML_REGEX.test(val), "Title cannot contain HTML tags"),
+  description: z
+    .string()
+    .min(1, "Description is required and cannot be empty")
+    .min(120, "Description must be at least 120 characters for SEO")
+    .max(160, "Description must not exceed 160 characters for SEO")
+    .refine((val) => !NO_HTML_REGEX.test(val), "Description cannot contain HTML tags"),
+  keywords: z.array(z.string()).optional(),
+  path: z
+    .string()
+    .optional()
+    .refine(
+      (val) => !val || (val.startsWith("/") && !val.includes("..")),
+      'Path must start with "/" and not contain ".."'
+    ),
+  image: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.startsWith("http"), "Image must be an HTTP(S) URL"),
+});
+
 /**
  * Validate metadata input to prevent SEO issues and XSS vulnerabilities
  */
 function validateMetadataInput(props: PageMetadataProps): void {
-  const { title, description, path, image } = props;
-
-  if (!title || title.trim().length === 0) {
-    throw new Error("Metadata validation: Title is required and cannot be empty");
-  }
-
-  if (title.length > 60) {
-    throw new Error(
-      `Metadata validation: Title exceeds 60 characters (max for SEO). Got: ${title.length}`
-    );
-  }
-
-  if (/<[^>]*>/.test(title)) {
-    throw new Error("Metadata validation: Title cannot contain HTML tags");
-  }
-
-  if (!description || description.trim().length === 0) {
-    throw new Error("Metadata validation: Description is required and cannot be empty");
-  }
-
-  if (description.length < 120 || description.length > 160) {
-    throw new Error(
-      `Metadata validation: Description must be 120-160 characters for SEO. Got: ${description.length}`
-    );
-  }
-
-  if (/<[^>]*>/.test(description)) {
-    throw new Error("Metadata validation: Description cannot contain HTML tags");
-  }
-
-  if (path && (!path.startsWith("/") || path.includes(".."))) {
-    throw new Error(
-      `Metadata validation: Path must start with "/" and not contain "..". Got: ${path}`
-    );
-  }
-
-  if (image) {
-    try {
-      const url = new URL(image);
-      if (!["https:", "http:"].includes(url.protocol)) {
-        throw new Error("Metadata validation: Image must be an HTTP(S) URL");
-      }
-    } catch (err) {
-      throw new Error(
-        `Metadata validation: Invalid image URL. Must be absolute HTTP(S) URL. Got: ${image}`
-      );
-    }
-  }
+  MetadataSchema.parse(props);
 }
 
 /**

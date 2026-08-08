@@ -1,6 +1,6 @@
-import type { Programme, Coach, Testimonial } from "@/types";
+import type { ProgrammeDetails, Coach, Testimonial } from "@/types";
 
-export const PROGRAMMES: Record<string, Programme & { features: string[]; learningOutcomes: string[]; faqs: Array<{ question: string; answer: string }> }> = {
+export const PROGRAMMES: Record<string, ProgrammeDetails> = {
   kaizen: {
     id: "kaizen",
     name: "Kaizen",

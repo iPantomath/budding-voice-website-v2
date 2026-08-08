@@ -58,3 +58,11 @@ export const ANIMATION_DURATION = {
   normal: 0.3,
   slow: 0.5,
 };
+
+export const UI_COLORS = {
+  primary: "orange",
+  primaryHover: "orange",
+  background: "white",
+  text: "black",
+  textSecondary: "dark-grey",
+};

@@ -23,6 +23,17 @@ export interface Programme {
   link?: string;
 }
 
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ProgrammeDetails extends Programme {
+  features: string[];
+  learningOutcomes: string[];
+  faqs: FAQ[];
+}
+
 export interface Coach {
   id: string;
   name: string;
