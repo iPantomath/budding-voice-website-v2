@@ -22,6 +22,11 @@ const config: Config = {
         /* Text Colors */
         "text-primary": "#000000",
         "text-secondary": "#666666",
+
+        /* Semantic Status Colors */
+        success: "#22c55e",
+        warning: "#eab308",
+        error: "#ef4444",
       },
 
       fontFamily: {
