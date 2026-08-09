@@ -33,7 +33,7 @@ export default function Home() {
               subtitle="Communication is not a talent. It is a skill that can be developed with the right guidance."
             />
 
-            <div className="mt-12 space-y-4">
+            <ul className="mt-12 space-y-4 list-none">
               {[
                 "Feel shy speaking in front of others?",
                 "Struggle to express ideas clearly?",
@@ -41,7 +41,7 @@ export default function Home() {
                 "Memorise instead of understanding?",
                 "Avoid classroom participation?",
               ].map((item) => (
-                <div
+                <li
                   key={item}
                   className="flex items-center gap-4 rounded-lg bg-light-grey p-4"
                 >
@@ -49,9 +49,9 @@ export default function Home() {
                     ✓
                   </div>
                   <p className="text-text-secondary">{item}</p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </Container>
       </Section>
@@ -218,7 +218,7 @@ export default function Home() {
       <Section padding="lg">
         <Container>
           <SectionHeading
-            title="What Parents Say"
+            title="What Our Community Says"
             subtitle="Nothing speaks louder than the experiences of our learners, parents and partners."
           />
 
@@ -238,22 +238,6 @@ export default function Home() {
               name="Priya"
               role="Parent of APEX Student"
             />
-          </div>
-        </Container>
-      </Section>
-
-      {/* Partners Section */}
-      <Section alternateBackground padding="lg">
-        <Container>
-          <SectionHeading
-            title="Trusted by Families and Education Partners"
-            subtitle="Schools, preschools and organizations across Malaysia trust Budding Voice for communication and leadership development."
-          />
-
-          <div className="mt-12 text-center">
-            <p className="text-sm text-text-secondary">
-              Partner logos and details coming soon.
-            </p>
           </div>
         </Container>
       </Section>

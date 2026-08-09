@@ -1,4 +1,5 @@
 import React from "react";
+import { Star } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/utils/cn";
 
@@ -19,11 +20,13 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
           className
         )}
       >
-        <div className="mb-6 flex gap-1">
+        <div className="mb-6 flex gap-1" aria-label="5 out of 5 stars">
           {[...Array(5)].map((_, i) => (
-            <span key={i} className="text-orange">
-              ★
-            </span>
+            <Star
+              key={i}
+              className="h-5 w-5 fill-orange text-orange"
+              aria-hidden="true"
+            />
           ))}
         </div>
 
