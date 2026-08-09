@@ -1,152 +1,291 @@
-import { Container, Section, SectionHeading, Card, Button, Badge } from "@/components/ui";
+import { Container, Section, SectionHeading, Button, Card } from "@/components/ui";
+import { HeroSection } from "@/components/hero";
+import { ProgrammeCard, TestimonialCard } from "@/components/cards";
+
+export const metadata = {
+  title: "Budding Voice | Discover Their Voice, Unleash Their Potential",
+  description:
+    "Develop confidence, communication and leadership through Budding Voice's experiential learning programmes for children and teenagers.",
+  openGraph: {
+    title: "Budding Voice | Discover Their Voice, Unleash Their Potential",
+    description:
+      "Develop confidence, communication and leadership through Budding Voice's experiential learning programmes for children and teenagers.",
+    url: "https://budding-voice.com",
+    type: "website",
+  },
+};
 
 export default function Home() {
   return (
     <>
-      {/* Design System Showcase */}
+      {/* Hero Section */}
+      <HeroSection
+        headline="Discover Their Voice. Unleash Their Potential."
+        supportingText="Every child has ideas worth sharing. At Budding Voice, we help children and teenagers develop confidence, communication and leadership through engaging, experiential learning."
+      />
+
+      {/* Parent Challenges Section */}
+      <Section padding="lg">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionHeading
+              title="Does Your Child..."
+              subtitle="Communication is not a talent. It is a skill that can be developed with the right guidance."
+            />
+
+            <div className="mt-12 space-y-4">
+              {[
+                "Feel shy speaking in front of others?",
+                "Struggle to express ideas clearly?",
+                "Lack confidence in social situations?",
+                "Memorise instead of understanding?",
+                "Avoid classroom participation?",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-4 rounded-lg bg-light-grey p-4"
+                >
+                  <div className="h-6 w-6 flex-shrink-0 rounded-full bg-orange text-center text-xs font-bold text-white leading-6">
+                    ✓
+                  </div>
+                  <p className="text-text-secondary">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Why Budding Voice Section */}
       <Section alternateBackground padding="lg">
         <Container>
           <SectionHeading
-            title="Phase 2 Complete: Design System & Shared UI"
-            subtitle="All core components are ready for use across the website"
+            title="More Than Public Speaking"
+            subtitle="Our programmes go beyond speeches and presentations. We create meaningful learning experiences that build confidence, communication, leadership, critical thinking and character."
           />
 
-          {/* Components Grid */}
-          <div className="grid gap-8 md:grid-cols-2">
-            {/* Buttons */}
-            <Card>
-              <h3 className="mb-4 text-xl font-semibold text-text-primary">
-                Buttons
-              </h3>
-              <div className="space-y-3">
-                <div className="flex flex-wrap gap-2">
-                  <Button size="sm">Small Primary</Button>
-                  <Button variant="secondary" size="sm">
-                    Small Secondary
-                  </Button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Button size="md">Medium Primary</Button>
-                  <Button variant="tertiary" size="md">
-                    Medium Tertiary
-                  </Button>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <Button size="lg">Large Primary</Button>
-                  <Button variant="ghost" size="lg">
-                    Large Ghost
-                  </Button>
-                </div>
-                <Button fullWidth isLoading>
-                  Loading State
-                </Button>
-              </div>
-            </Card>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                title: "Small Class Sizes",
+                description:
+                  "Personalized attention ensures every learner gets individual feedback and support.",
+              },
+              {
+                title: "Activity-Based Learning",
+                description:
+                  "Engaging activities make learning fun and help skills stick.",
+              },
+              {
+                title: "Real Speaking Opportunities",
+                description:
+                  "Students practise in a safe environment before showcase presentations.",
+              },
+              {
+                title: "Personalised Feedback",
+                description:
+                  "Constructive guidance helps learners understand their progress and growth areas.",
+              },
+              {
+                title: "Showcase Opportunities",
+                description:
+                  "Regular presentations build confidence and reinforce learning.",
+              },
+              {
+                title: "Parent Collaboration",
+                description:
+                  "We keep parents informed and share practical strategies for home support.",
+              },
+            ].map((item) => (
+              <Card key={item.title} className="flex flex-col">
+                <h3 className="mb-3 font-bold text-text-primary">
+                  {item.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-text-secondary">
+                  {item.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
-            {/* Cards & Badges */}
-            <Card>
-              <h3 className="mb-4 text-xl font-semibold text-text-primary">
-                Cards & Badges
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="mb-2 text-sm font-medium text-text-secondary">
-                    Card Component
-                  </p>
-                  <Card padding="md">
-                    <p className="leading-relaxed text-sm text-text-secondary">
-                      Reusable card with hover animation and customizable padding.
+      {/* Programmes Section */}
+      <Section padding="lg">
+        <Container>
+          <SectionHeading
+            title="Programmes Designed for Every Stage of Growth"
+            subtitle="Every learner grows differently. Our programmes are designed to support children and teenagers at different stages of their communication and leadership journey."
+          />
+
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <ProgrammeCard
+              name="Kaizen"
+              ageRange="4–7 Years"
+              description="Build confidence, curiosity and self-expression through fun, engaging and age-appropriate activities."
+              href="/programmes/kaizen"
+            />
+            <ProgrammeCard
+              name="Orator"
+              ageRange="8–12 Years"
+              description="Develop communication, storytelling and presentation skills while strengthening confidence and teamwork."
+              href="/programmes/orator"
+            />
+            <ProgrammeCard
+              name="APEX"
+              ageRange="13–17 Years"
+              description="Prepare future leaders with advanced communication, leadership and critical thinking skills."
+              href="/programmes/apex"
+            />
+          </div>
+        </Container>
+      </Section>
+
+      {/* Learning Philosophy Section */}
+      <Section alternateBackground padding="lg">
+        <Container>
+          <div className="mx-auto max-w-2xl">
+            <SectionHeading
+              title="How We Help Learners Grow"
+              subtitle="Learning happens through doing."
+            />
+
+            <p className="mt-8 leading-relaxed text-text-secondary">
+              Students participate in activities, reflect on their experiences,
+              receive constructive feedback and continuously improve in a safe
+              and encouraging environment.
+            </p>
+
+            <div className="mt-12 grid gap-8 sm:grid-cols-2">
+              {[
+                {
+                  step: "1",
+                  title: "Join",
+                  description:
+                    "Welcome to a supportive learning community where every voice matters.",
+                },
+                {
+                  step: "2",
+                  title: "Learn",
+                  description:
+                    "Engage in purposeful activities designed for your age and learning stage.",
+                },
+                {
+                  step: "3",
+                  title: "Practice",
+                  description:
+                    "Apply new skills in a safe environment with guidance and support.",
+                },
+                {
+                  step: "4",
+                  title: "Receive Feedback",
+                  description:
+                    "Get constructive, personalized feedback to guide your growth.",
+                },
+                {
+                  step: "5",
+                  title: "Showcase",
+                  description:
+                    "Share your learning with the community in celebration presentations.",
+                },
+                {
+                  step: "6",
+                  title: "Continue Growing",
+                  description:
+                    "Build on your progress and develop new skills and confidence.",
+                },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-4">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white font-bold">
+                    {item.step}
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-text-primary">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1 text-sm text-text-secondary">
+                      {item.description}
                     </p>
-                  </Card>
-                </div>
-                <div>
-                  <p className="mb-2 text-sm font-medium text-text-secondary">
-                    Badges
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="primary">Primary</Badge>
-                    <Badge variant="secondary">Secondary</Badge>
-                    <Badge variant="success">Success</Badge>
                   </div>
                 </div>
-              </div>
-            </Card>
-
-            {/* Typography */}
-            <Card>
-              <h3 className="mb-4 text-xl font-semibold text-text-primary">
-                Typography
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="mb-1 font-semibold text-text-primary">
-                    Heading
-                  </h4>
-                  <p className="leading-relaxed text-sm text-text-secondary">
-                    Clean, readable, modern sans-serif (Inter)
-                  </p>
-                </div>
-                <div>
-                  <p className="mb-1 text-sm font-medium text-text-secondary">
-                    Body Text
-                  </p>
-                  <p className="leading-relaxed text-sm text-text-secondary">
-                    Optimized line spacing for comfortable reading
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            {/* Layout Components */}
-            <Card>
-              <h3 className="mb-4 text-xl font-semibold text-text-primary">
-                Layout
-              </h3>
-              <div className="space-y-3 leading-relaxed text-sm text-text-secondary">
-                <p>✓ Sticky Navbar with mobile menu</p>
-                <p>✓ Responsive Footer with links & social</p>
-                <p>✓ Container component (max 1200px)</p>
-                <p>✓ Section component with alternate backgrounds</p>
-              </div>
-            </Card>
-          </div>
-
-          {/* Checklist */}
-          <Card className="mt-8">
-            <h3 className="mb-6 text-2xl font-bold text-text-primary">
-              Phase 2 Deliverables
-            </h3>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div>
-                <h4 className="mb-3 font-semibold text-orange">
-                  UI Components
-                </h4>
-                <ul className="space-y-2 leading-relaxed text-sm text-text-secondary">
-                  <li>✓ Button (4 variants, 4 sizes)</li>
-                  <li>✓ Card (with hover animation)</li>
-                  <li>✓ Container (responsive max-width)</li>
-                  <li>✓ Section (with alternating backgrounds)</li>
-                  <li>✓ SectionHeading (reusable heading pattern)</li>
-                  <li>✓ Badge (5 variants)</li>
-                  <li>✓ Link (3 variants, internal/external)</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="mb-3 font-semibold text-orange">
-                  Layout Components
-                </h4>
-                <ul className="space-y-2 leading-relaxed text-sm text-text-secondary">
-                  <li>✓ Navbar (sticky, transparent, mobile menu)</li>
-                  <li>✓ Footer (links, contact, social)</li>
-                  <li>✓ Navigation links (8 pages)</li>
-                  <li>✓ Responsive behavior (mobile-first)</li>
-                  <li>✓ Focus states & accessibility</li>
-                  <li>✓ Design tokens (colors, spacing)</li>
-                  <li>✓ Animation utilities (Framer Motion ready)</li>
-                </ul>
-              </div>
+              ))}
             </div>
-          </Card>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Testimonials Section */}
+      <Section padding="lg">
+        <Container>
+          <SectionHeading
+            title="What Parents Say"
+            subtitle="Nothing speaks louder than the experiences of our learners, parents and partners."
+          />
+
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            <TestimonialCard
+              quote="My child's confidence has grown so much. They're now happy to speak up in class and share their ideas."
+              name="Sarah"
+              role="Parent of Kaizen Student"
+            />
+            <TestimonialCard
+              quote="The activity-based approach really works. My son actually looks forward to class now!"
+              name="David"
+              role="Parent of Orator Student"
+            />
+            <TestimonialCard
+              quote="Our daughter has become a natural presenter. The programme truly prepares them for life."
+              name="Priya"
+              role="Parent of APEX Student"
+            />
+          </div>
+        </Container>
+      </Section>
+
+      {/* Partners Section */}
+      <Section alternateBackground padding="lg">
+        <Container>
+          <SectionHeading
+            title="Trusted by Families and Education Partners"
+            subtitle="Schools, preschools and organizations across Malaysia trust Budding Voice for communication and leadership development."
+          />
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-text-secondary">
+              Partner logos and details coming soon.
+            </p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Final CTA Section */}
+      <Section padding="lg" className="bg-gradient-to-r from-orange/5 to-orange/10">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <SectionHeading
+              title="Ready to Begin the Journey?"
+              subtitle="Help your child discover confidence, communication and leadership through meaningful learning experiences."
+            />
+
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6">
+              <Button
+                variant="primary"
+                size="lg"
+                href="/contact"
+                className="w-full sm:w-auto"
+              >
+                Book a Trial Class
+              </Button>
+              <Button
+                variant="secondary"
+                size="lg"
+                href="https://wa.me/1234567890"
+                className="w-full sm:w-auto"
+              >
+                WhatsApp Us
+              </Button>
+            </div>
+          </div>
         </Container>
       </Section>
     </>
