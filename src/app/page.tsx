@@ -1,36 +1,8 @@
 import { Container, Section, SectionHeading, Card, Button, Badge } from "@/components/ui";
-import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <Section className="bg-gradient-to-br from-white to-light-grey">
-        <Container className="text-center">
-          <h1 className="mb-4 text-4xl font-bold text-text-primary sm:text-5xl lg:text-6xl">
-            Discover Your Voice
-          </h1>
-          <p className="mb-8 max-w-2xl text-lg text-text-secondary sm:text-xl">
-            Communication & Leadership Centre helping students build confidence,
-            develop critical thinking, and grow with purpose.
-          </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-orange px-6 py-3 text-lg font-medium text-white transition-all duration-300 hover:bg-orange/90 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
-            >
-              Book Trial Class
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-orange bg-white px-6 py-3 text-lg font-medium text-orange transition-all duration-300 hover:bg-orange/5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
-            >
-              Learn More
-            </Link>
-          </div>
-        </Container>
-      </Section>
-
       {/* Design System Showcase */}
       <Section alternateBackground padding="lg">
         <Container>

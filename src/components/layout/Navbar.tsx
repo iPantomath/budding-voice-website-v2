@@ -4,21 +4,13 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { navigationLinks } from "@/constants/navigation";
 
 export interface NavbarProps {
   transparent?: boolean;
 }
 
-const navigationLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Programmes", href: "/programmes" },
-  { label: "Schools", href: "/schools" },
-  { label: "Corporate", href: "/corporate" },
-  { label: "Testimonials", href: "/testimonials" },
-  { label: "Resources", href: "/resources" },
-  { label: "Contact", href: "/contact" },
-];
+const SCROLL_THRESHOLD = 50;
 
 const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
   ({ transparent = true }, ref) => {
@@ -27,12 +19,22 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
     useEffect(() => {
       const handleScroll = () => {
-        setIsScrolled(window.scrollY > 50);
+        setIsScrolled(window.scrollY > SCROLL_THRESHOLD);
+      };
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape" && isMobileMenuOpen) {
+          setIsMobileMenuOpen(false);
+        }
       };
 
       window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [isMobileMenuOpen]);
 
     const shouldHaveSolidBg = !transparent || isScrolled;
 
@@ -93,7 +95,7 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="rounded-lg p-2 text-text-primary transition-colors hover:bg-light-grey md:hidden"
+              className="rounded-lg p-3 text-text-primary transition-colors hover:bg-light-grey md:hidden"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
