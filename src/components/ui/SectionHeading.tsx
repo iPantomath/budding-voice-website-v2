@@ -32,11 +32,11 @@ const SectionHeading = React.forwardRef<HTMLDivElement, SectionHeadingProps>(
         )}
         {...props}
       >
-        <h2 className="mb-4 text-3xl font-bold text-text-primary sm:text-4xl">
+        <h2 className="mb-4 text-3xl font-bold leading-tight text-text-primary sm:text-4xl">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-lg text-text-secondary sm:text-xl">{subtitle}</p>
+          <p className="leading-relaxed text-lg text-text-secondary sm:text-xl">{subtitle}</p>
         )}
       </div>
     );

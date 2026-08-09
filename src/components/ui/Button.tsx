@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { cn } from "@/utils/cn";
 
 export interface ButtonProps
@@ -9,6 +10,7 @@ export interface ButtonProps
   isLoading?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  href?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,6 +24,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading = false,
       leftIcon,
       rightIcon,
+      href,
       children,
       ...props
     },
@@ -46,19 +49,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       xl: "px-8 py-4 text-lg",
     };
 
-    return (
-      <button
-        ref={ref}
-        className={cn(
-          baseStyles,
-          variantStyles[variant],
-          sizeStyles[size],
-          fullWidth && "w-full",
-          className
-        )}
-        disabled={disabled || isLoading}
-        {...props}
-      >
+    const combinedStyles = cn(
+      baseStyles,
+      variantStyles[variant],
+      sizeStyles[size],
+      fullWidth && "w-full",
+      className
+    );
+
+    const content = (
+      <>
         {isLoading && (
           <svg
             className="animate-spin h-4 w-4"
@@ -84,6 +84,25 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {!isLoading && leftIcon && <span>{leftIcon}</span>}
         {children}
         {!isLoading && rightIcon && <span>{rightIcon}</span>}
+      </>
+    );
+
+    if (href) {
+      return (
+        <Link href={href} className={combinedStyles}>
+          {content}
+        </Link>
+      );
+    }
+
+    return (
+      <button
+        ref={ref}
+        className={combinedStyles}
+        disabled={disabled || isLoading}
+        {...props}
+      >
+        {content}
       </button>
     );
   }

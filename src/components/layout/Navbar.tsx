@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
+import { Button } from "@/components/ui";
 import { navigationLinks } from "@/constants/navigation";
 
 export interface NavbarProps {
@@ -79,17 +80,9 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* CTA Button (Desktop) */}
             <div className="hidden items-center gap-4 md:flex">
-              <Link
-                href="/contact"
-                className={cn(
-                  "inline-flex items-center justify-center rounded-lg bg-orange px-6 py-2.5",
-                  "text-sm font-medium text-white transition-all duration-300",
-                  "hover:bg-orange/90 hover:shadow-lg active:scale-95",
-                  "focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
-                )}
-              >
+              <Button variant="primary" size="sm" href="/contact">
                 Get Started
-              </Link>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -125,17 +118,15 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
                     {link.label}
                   </Link>
                 ))}
-                <Link
+                <Button
+                  variant="primary"
+                  size="md"
                   href="/contact"
-                  className={cn(
-                    "block rounded-lg bg-orange px-4 py-2.5 text-base font-medium",
-                    "text-center text-white transition-all duration-300",
-                    "hover:bg-orange/90 active:scale-95"
-                  )}
+                  className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Started
-                </Link>
+                </Button>
               </div>
             </div>
           )}

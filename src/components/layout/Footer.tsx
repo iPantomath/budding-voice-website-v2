@@ -74,7 +74,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
                   </span>
                 </div>
               </Link>
-              <p className="mt-4 text-sm text-text-secondary">
+              <p className="mt-4 leading-relaxed text-sm text-text-secondary">
                 Helping students discover their voice, build confidence, and
                 grow with purpose.
               </p>

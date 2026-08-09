@@ -54,7 +54,7 @@ export default function Home() {
                     Card Component
                   </p>
                   <Card padding="md">
-                    <p className="text-sm text-text-secondary">
+                    <p className="leading-relaxed text-sm text-text-secondary">
                       Reusable card with hover animation and customizable padding.
                     </p>
                   </Card>
@@ -82,7 +82,7 @@ export default function Home() {
                   <h4 className="mb-1 font-semibold text-text-primary">
                     Heading
                   </h4>
-                  <p className="text-sm text-text-secondary">
+                  <p className="leading-relaxed text-sm text-text-secondary">
                     Clean, readable, modern sans-serif (Inter)
                   </p>
                 </div>
@@ -90,7 +90,7 @@ export default function Home() {
                   <p className="mb-1 text-sm font-medium text-text-secondary">
                     Body Text
                   </p>
-                  <p className="text-sm text-text-secondary">
+                  <p className="leading-relaxed text-sm text-text-secondary">
                     Optimized line spacing for comfortable reading
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function Home() {
               <h3 className="mb-4 text-xl font-semibold text-text-primary">
                 Layout
               </h3>
-              <div className="space-y-3 text-sm text-text-secondary">
+              <div className="space-y-3 leading-relaxed text-sm text-text-secondary">
                 <p>✓ Sticky Navbar with mobile menu</p>
                 <p>✓ Responsive Footer with links & social</p>
                 <p>✓ Container component (max 1200px)</p>
@@ -121,7 +121,7 @@ export default function Home() {
                 <h4 className="mb-3 font-semibold text-orange">
                   UI Components
                 </h4>
-                <ul className="space-y-2 text-sm text-text-secondary">
+                <ul className="space-y-2 leading-relaxed text-sm text-text-secondary">
                   <li>✓ Button (4 variants, 4 sizes)</li>
                   <li>✓ Card (with hover animation)</li>
                   <li>✓ Container (responsive max-width)</li>
@@ -135,7 +135,7 @@ export default function Home() {
                 <h4 className="mb-3 font-semibold text-orange">
                   Layout Components
                 </h4>
-                <ul className="space-y-2 text-sm text-text-secondary">
+                <ul className="space-y-2 leading-relaxed text-sm text-text-secondary">
                   <li>✓ Navbar (sticky, transparent, mobile menu)</li>
                   <li>✓ Footer (links, contact, social)</li>
                   <li>✓ Navigation links (8 pages)</li>
