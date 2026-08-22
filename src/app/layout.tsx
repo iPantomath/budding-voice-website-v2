@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Navbar, Footer } from "@/components/layout";
+import { generateStructuredData } from "@/lib/metadata";
+import { SITE_CONFIG } from "@/constants";
 import "./globals.css";
 
 const inter = Inter({
@@ -66,6 +68,33 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://budding-voice.com",
   },
+  verification: {
+    google: "[PLACEHOLDER: Google Search Console Verification Code]",
+  },
+};
+
+/**
+ * Logo and sameAs (social profile URLs) are intentionally omitted.
+ * No logo asset exists in /public yet (pending Phase 4 visual assets), and
+ * business-questionnaire.md marks all social URLs as unconfirmed ("TBC").
+ * Adding either would assert unverified identity claims in machine-readable
+ * data. Add them once real values are confirmed.
+ */
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  name: SITE_CONFIG.name,
+  description: SITE_CONFIG.description,
+  url: SITE_CONFIG.url,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Customer Service",
+    availableLanguage: ["en", "ms"],
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "MY",
+  },
 };
 
 export default function RootLayout({
@@ -80,6 +109,10 @@ export default function RootLayout({
     >
       <head>
         <meta charSet="utf-8" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={generateStructuredData(organizationSchema)}
+        />
       </head>
       <body className="flex min-h-screen flex-col font-sans-serif">
         <Navbar />

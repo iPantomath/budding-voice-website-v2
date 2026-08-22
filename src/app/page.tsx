@@ -1,23 +1,37 @@
 import { Container, Section, SectionHeading, Button, Card } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
 import { ProgrammeCard, TestimonialCard } from "@/components/cards";
+import {
+  generatePageMetadata,
+  generateStructuredData,
+  generateWebPageSchema,
+} from "@/lib/metadata";
+import { SITE_CONFIG } from "@/constants";
 
-export const metadata = {
-  title: "Budding Voice | Discover Their Voice, Unleash Their Potential",
-  description:
-    "Develop confidence, communication and leadership through Budding Voice's experiential learning programmes for children and teenagers.",
-  openGraph: {
-    title: "Budding Voice | Discover Their Voice, Unleash Their Potential",
-    description:
-      "Develop confidence, communication and leadership through Budding Voice's experiential learning programmes for children and teenagers.",
-    url: "https://budding-voice.com",
-    type: "website",
-  },
-};
+const TITLE = "Discover Their Voice, Unleash Potential";
+const DESCRIPTION =
+  "Develop confidence, communication and leadership through Budding Voice's experiential learning programmes for children and teenagers.";
+
+export const metadata = generatePageMetadata({
+  title: TITLE,
+  description: DESCRIPTION,
+  image: `${SITE_CONFIG.url}${SITE_CONFIG.placeholderImage}`,
+});
 
 export default function Home() {
+  const schema = generateWebPageSchema(
+    `${TITLE} | ${SITE_CONFIG.name}`,
+    DESCRIPTION,
+    SITE_CONFIG.url,
+    [{ name: "Home", url: SITE_CONFIG.url }]
+  );
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={generateStructuredData(schema)}
+      />
       {/* Hero Section */}
       <HeroSection
         headline="Discover Their Voice. Unleash Their Potential."
@@ -255,7 +269,7 @@ export default function Home() {
               <Button
                 variant="primary"
                 size="lg"
-                href="/contact"
+                href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"
               >
                 Book a Trial Class

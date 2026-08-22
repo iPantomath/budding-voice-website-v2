@@ -19,7 +19,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       headline,
       supportingText,
       primaryCTAText = "Book a Trial Class",
-      primaryCTAHref = "/contact",
+      primaryCTAHref = "https://wa.me/1234567890",
       secondaryCTAText = "WhatsApp Us",
       secondaryCTAHref = "https://wa.me/1234567890",
       className,

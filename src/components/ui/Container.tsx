@@ -9,13 +9,15 @@ export interface ContainerProps
 
 const Container = React.forwardRef<HTMLDivElement, ContainerProps>(
   ({ className, size = "xl", noPadding = false, ...props }, ref) => {
-    // Size values map to Tailwind max-width classes defined in tailwind.config.ts
-    // Default size="xl" = 1200px (defined in config, not Tailwind default)
+    // Explicit pixel values rather than named max-w-sm/md/lg/xl classes: in
+    // this project's Tailwind v4 setup, those named keys collide with the
+    // theme's `spacing` scale (which also defines sm/md/lg/xl) and resolve
+    // to the wrong value. Arbitrary values sidestep the collision entirely.
     const sizeStyles = {
-      sm: "max-w-sm",
-      md: "max-w-md",
-      lg: "max-w-lg",
-      xl: "max-w-xl",
+      sm: "max-w-[640px]",
+      md: "max-w-[768px]",
+      lg: "max-w-[1024px]",
+      xl: "max-w-[1200px]",
       full: "w-full",
     };
 

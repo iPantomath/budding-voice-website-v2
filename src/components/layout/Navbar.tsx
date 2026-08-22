@@ -80,8 +80,8 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* CTA Button (Desktop) */}
             <div className="hidden items-center gap-4 md:flex">
-              <Button variant="primary" size="sm" href="/contact">
-                Get Started
+              <Button variant="primary" size="sm" href="https://wa.me/1234567890">
+                WhatsApp Us
               </Button>
             </div>
 
@@ -121,11 +121,11 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
                 <Button
                   variant="primary"
                   size="md"
-                  href="/contact"
+                  href="https://wa.me/1234567890"
                   className="w-full"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Get Started
+                  WhatsApp Us
                 </Button>
               </div>
             </div>

@@ -5,6 +5,13 @@ export const SITE_CONFIG = {
   url: "https://budding-voice.com",
   locale: "en_MY",
   timezone: "Asia/Kuala_Lumpur",
+  /**
+   * Placeholder image used for og:image/twitter:image and programme visual
+   * boxes until real Budding Voice photography is available (Phase 4).
+   * Replace this single path once real assets exist — every page reads it
+   * from here rather than hardcoding it.
+   */
+  placeholderImage: "/programme-visual-v2.webp",
 };
 
 export const COLORS = {

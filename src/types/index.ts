@@ -45,11 +45,13 @@ export interface Coach {
 
 export interface Testimonial {
   id: string;
+  quote: string;
   author: string;
   role: string;
-  content: string;
+  type: "parent" | "student" | "general";
+  programme: string;
   image?: string;
-  rating?: number;
+  isPlaceholder: boolean;
 }
 
 export interface ContactFormData {

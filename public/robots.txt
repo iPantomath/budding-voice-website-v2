@@ -1,0 +1,6 @@
+# Budding Voice Website - Robots Configuration
+
+User-agent: *
+Allow: /
+
+Sitemap: https://budding-voice.com/sitemap.xml

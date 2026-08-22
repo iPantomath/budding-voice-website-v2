@@ -151,3 +151,85 @@ export function generateStructuredData(data: Record<string, unknown>) {
     __html: JSON.stringify(data),
   };
 }
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+/**
+ * Builds BreadcrumbList JSON-LD. Every url passed in must resolve to a real
+ * route — this function does not verify that, callers must only pass live routes.
+ */
+export function generateBreadcrumbSchema(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
+export function generateWebPageSchema(
+  title: string,
+  description: string,
+  url: string,
+  breadcrumbs?: BreadcrumbItem[]
+): Record<string, unknown> {
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url,
+    publisher: {
+      "@type": "EducationalOrganization",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+    },
+  };
+
+  if (breadcrumbs && breadcrumbs.length > 0) {
+    schema.breadcrumb = generateBreadcrumbSchema(breadcrumbs);
+  }
+
+  return schema;
+}
+
+/**
+ * Builds Course JSON-LD limited to properties we can state truthfully.
+ *
+ * Note: this intentionally omits hasCourseInstance, offers and aggregateRating.
+ * Google's Course rich-result guidelines recommend those properties, but we
+ * have no real pricing, schedule, or review data to populate them with. Adding
+ * placeholder values would misrepresent the business, so this schema stays
+ * valid schema.org markup without being eligible for the Course rich result.
+ */
+export function generateCourseSchema(
+  name: string,
+  description: string,
+  ageGroup: string,
+  url: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name,
+    description,
+    url,
+    provider: {
+      "@type": "EducationalOrganization",
+      name: SITE_CONFIG.name,
+      url: SITE_CONFIG.url,
+    },
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+      description: `Students aged ${ageGroup}`,
+    },
+  };
+}
