@@ -1,15 +1,17 @@
 export default function Loading() {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
+    <div
+      role="status"
+      aria-live="polite"
+      className="flex flex-1 flex-col items-center justify-center px-6 py-20"
+    >
       <div className="max-w-2xl text-center">
         <div className="mb-6 inline-block">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-gray-200 border-t-orange"></div>
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-light-grey border-t-orange" />
         </div>
-        <h1 className="mb-2 text-2xl font-semibold text-gray-900">
-          Loading...
-        </h1>
-        <p className="text-gray-600">Please wait while we prepare the page.</p>
+        <p className="mb-2 text-xl font-semibold text-text-primary">Loading…</p>
+        <p className="text-text-secondary">Please wait while we prepare the page.</p>
       </div>
-    </main>
+    </div>
   );
 }

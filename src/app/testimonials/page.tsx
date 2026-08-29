@@ -1,4 +1,4 @@
-import { Container, Section, SectionHeading, Button } from "@/components/ui";
+import { Container, Section, SectionHeading, Button, Card, Reveal } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
 import { TestimonialCard } from "@/components/cards";
 import { TESTIMONIALS, PROGRAMMES } from "@/constants/content";
@@ -40,8 +40,10 @@ export default function Testimonials() {
       />
       {/* Hero Section */}
       <HeroSection
+        eyebrow="Community Voices"
         headline="What Parents & Students Say"
         supportingText="Read real experiences from our learning community. Parents and students share how Budding Voice has made a difference in their communication and confidence journey."
+        showVisual={false}
       />
 
       {/* Testimonials Grid */}
@@ -57,16 +59,18 @@ export default function Testimonials() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {TESTIMONIALS.map((testimonial) => (
-              <TestimonialCard
-                key={testimonial.id}
-                quote={testimonial.quote}
-                name={testimonial.author}
-                role={testimonial.role}
-                programme={testimonial.programme}
-                type={testimonial.type}
-                isPlaceholder={testimonial.isPlaceholder}
-              />
+            {TESTIMONIALS.map((testimonial, index) => (
+              <Reveal key={testimonial.id} index={index} delay={0.05}>
+                <TestimonialCard
+                  quote={testimonial.quote}
+                  name={testimonial.author}
+                  role={testimonial.role}
+                  programme={testimonial.programme}
+                  type={testimonial.type}
+                  isPlaceholder={testimonial.isPlaceholder}
+                  className="h-full"
+                />
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -82,27 +86,29 @@ export default function Testimonials() {
             />
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {Object.entries(PROGRAMMES).map(([id, programme]) => (
-                <div key={id} className="rounded-lg bg-white p-6 shadow-md">
-                  <h3 className="mb-1 text-xl font-bold text-orange">
-                    {programme.name}
-                  </h3>
-                  <p className="mb-3 text-sm font-medium text-text-secondary">
-                    Age {programme.age}
-                  </p>
-                  <p className="text-text-secondary">
-                    {programme.description}
-                  </p>
-                  <div className="mt-4">
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      href={`/programmes/${id}`}
-                    >
-                      Learn More
-                    </Button>
-                  </div>
-                </div>
+              {Object.entries(PROGRAMMES).map(([id, programme], index) => (
+                <Reveal key={id} index={index}>
+                  <Card className="flex h-full flex-col">
+                    <h3 className="mb-1 text-xl font-bold text-orange">
+                      {programme.name}
+                    </h3>
+                    <p className="mb-3 text-sm font-medium text-text-secondary">
+                      Age {programme.age}
+                    </p>
+                    <p className="flex-1 text-text-secondary">
+                      {programme.description}
+                    </p>
+                    <div className="mt-4">
+                      <Button
+                        variant="secondary"
+                        size="sm"
+                        href={`/programmes/${id}`}
+                      >
+                        Learn More
+                      </Button>
+                    </div>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -118,7 +124,7 @@ export default function Testimonials() {
               subtitle="Book a trial class and experience how Budding Voice can help your child build confidence, express themselves and grow."
             />
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
               <Button
                 variant="primary"
                 size="lg"
@@ -128,7 +134,7 @@ export default function Testimonials() {
                 Book a Trial Class
               </Button>
               <Button
-                variant="secondary"
+                variant="tertiary"
                 size="lg"
                 href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"

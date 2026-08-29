@@ -10,12 +10,27 @@ export interface CoachCardProps {
   className?: string;
 }
 
+const getInitials = (name: string) =>
+  name
+    .replace(/^coach\s+/i, "")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
 const CoachCard = React.forwardRef<HTMLDivElement, CoachCardProps>(
   ({ name, role, bio, specialisation, className }, ref) => {
     return (
       <Card ref={ref} className={cn("flex flex-col", className)}>
-        <div className="mb-6 h-48 w-full bg-gradient-to-br from-orange/10 to-orange/5 rounded-md flex items-center justify-center text-text-secondary">
-          <span className="text-sm">Coach Photo</span>
+        <div className="mb-6 flex h-48 w-full items-center justify-center rounded-md bg-gradient-to-br from-orange/15 via-orange/10 to-orange/5">
+          <span
+            aria-hidden="true"
+            className="flex h-20 w-20 items-center justify-center rounded-full bg-orange text-2xl font-bold text-white shadow-md"
+          >
+            {getInitials(name)}
+          </span>
         </div>
 
         <h3 className="mb-1 font-bold text-text-primary">{name}</h3>

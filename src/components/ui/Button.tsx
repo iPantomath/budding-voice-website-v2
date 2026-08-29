@@ -31,13 +31,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+      "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0";
 
     const variantStyles = {
       primary:
-        "bg-orange text-white hover:bg-orange/90 active:scale-95 shadow-md hover:shadow-lg",
+        "bg-orange text-white hover:bg-orange/90 hover:-translate-y-0.5 active:scale-95 active:translate-y-0 shadow-md hover:shadow-lg",
       secondary:
-        "bg-white text-orange border-2 border-orange hover:bg-orange/5 active:scale-95",
+        "bg-white text-orange border-2 border-orange hover:bg-orange/5 hover:-translate-y-0.5 active:scale-95 active:translate-y-0",
       tertiary: "text-orange hover:bg-orange/10 active:scale-95",
       ghost: "text-black hover:bg-light-grey active:scale-95",
     };

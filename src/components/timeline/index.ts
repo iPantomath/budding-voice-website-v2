@@ -1,3 +1,1 @@
-// Timeline components will be exported here
-// Example: export { Timeline } from './Timeline';
-// Example: export { TimelineItem } from './TimelineItem';
+export { Timeline, type TimelineStep, type TimelineProps } from "./Timeline";

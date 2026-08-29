@@ -1,6 +1,7 @@
-import { Container, Section, SectionHeading, Button, Card } from "@/components/ui";
+import { Container, Section, SectionHeading, Button, Card, Reveal } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
 import { CoachCard } from "@/components/cards";
+import { Timeline } from "@/components/timeline";
 import {
   generatePageMetadata,
   generateStructuredData,
@@ -39,8 +40,10 @@ export default function About() {
       />
       {/* Hero Section */}
       <HeroSection
+        eyebrow="About Budding Voice"
         headline="Helping Every Learner Find Their Voice"
         supportingText="Budding Voice is a Communication & Leadership Centre committed to helping children, teenagers and adults discover confidence, express themselves authentically and grow into thoughtful leaders."
+        showVisual={false}
       />
 
       {/* Our Story Section */}
@@ -90,9 +93,9 @@ export default function About() {
 
           <div className="mt-12 grid gap-12 md:grid-cols-2">
             <div>
-              <h4 className="mb-4 text-2xl font-bold text-text-primary">
+              <h3 className="mb-4 text-2xl font-bold text-text-primary">
                 Our Mission
-              </h4>
+              </h3>
               <p className="leading-relaxed text-text-secondary">
                 Develop confident communicators who lead with purpose.
               </p>
@@ -104,9 +107,9 @@ export default function About() {
             </div>
 
             <div>
-              <h4 className="mb-4 text-2xl font-bold text-text-primary">
+              <h3 className="mb-4 text-2xl font-bold text-text-primary">
                 Our Vision
-              </h4>
+              </h3>
               <p className="leading-relaxed text-text-secondary">
                 Raise a generation of confident, expressive and thoughtful leaders.
               </p>
@@ -150,18 +153,20 @@ export default function About() {
                 description:
                   "Learning is continuous. We celebrate progress, not perfection, and encourage learners to view challenges as opportunities to develop.",
               },
-            ].map((value) => (
-              <Card key={value.title} className="flex flex-col">
-                <div className="mb-4 h-10 w-10 rounded-full bg-orange/10 flex items-center justify-center">
-                  <div className="h-6 w-6 rounded-full bg-orange/20" />
-                </div>
-                <h4 className="mb-3 font-bold text-text-primary">
-                  {value.title}
-                </h4>
-                <p className="text-sm leading-relaxed text-text-secondary">
-                  {value.description}
-                </p>
-              </Card>
+            ].map((value, index) => (
+              <Reveal key={value.title} index={index}>
+                <Card className="flex h-full flex-col">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange/10">
+                    <div className="h-6 w-6 rounded-full bg-orange/20" />
+                  </div>
+                  <h3 className="mb-3 font-bold text-text-primary">
+                    {value.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-text-secondary">
+                    {value.description}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -178,48 +183,36 @@ export default function About() {
               maxWidth={false}
             />
 
-            <div className="mt-12 space-y-8">
-              {[
-                {
-                  title: "Experiential Learning",
-                  description:
-                    "We believe learners grow best by doing. Every class includes interactive activities, games, discussions and opportunities to practice speaking in real scenarios.",
-                },
-                {
-                  title: "Reflection",
-                  description:
-                    "After each activity, learners reflect on what they experienced and what they learned. This helps them connect actions to outcomes and develop self-awareness.",
-                },
-                {
-                  title: "Practice",
-                  description:
-                    "Communication skills develop through repetition in a supportive environment. We provide multiple opportunities to practise, make mistakes and improve without fear.",
-                },
-                {
-                  title: "Facilitation",
-                  description:
-                    "Our coaches guide and support learners, rather than simply lecturing. We ask questions, offer feedback and help learners discover answers themselves.",
-                },
-                {
-                  title: "Peer Learning",
-                  description:
-                    "Small class sizes mean learners learn from each other. They observe their peers, share feedback and build community together.",
-                },
-              ].map((item, index) => (
-                <div key={item.title} className="flex gap-6">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white font-bold">
-                    {index + 1}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="mb-2 font-semibold text-text-primary">
-                      {item.title}
-                    </h4>
-                    <p className="text-text-secondary leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-12">
+              <Timeline
+                steps={[
+                  {
+                    title: "Experiential Learning",
+                    description:
+                      "We believe learners grow best by doing. Every class includes interactive activities, games, discussions and opportunities to practice speaking in real scenarios.",
+                  },
+                  {
+                    title: "Reflection",
+                    description:
+                      "After each activity, learners reflect on what they experienced and what they learned. This helps them connect actions to outcomes and develop self-awareness.",
+                  },
+                  {
+                    title: "Practice",
+                    description:
+                      "Communication skills develop through repetition in a supportive environment. We provide multiple opportunities to practise, make mistakes and improve without fear.",
+                  },
+                  {
+                    title: "Facilitation",
+                    description:
+                      "Our coaches guide and support learners, rather than simply lecturing. We ask questions, offer feedback and help learners discover answers themselves.",
+                  },
+                  {
+                    title: "Peer Learning",
+                    description:
+                      "Small class sizes mean learners learn from each other. They observe their peers, share feedback and build community together.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </Container>
@@ -234,24 +227,30 @@ export default function About() {
           />
 
           <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <CoachCard
-              name="Coach Alfred"
-              role="Founder & Lead Coach"
-              bio="Alfred brings years of experience in youth development and communication training. His passion is helping learners discover their unique voice and build genuine confidence."
-              specialisation="Leadership Development, Youth Empowerment"
-            />
-            <CoachCard
-              name="Coach Sarah"
-              role="Senior Coach"
-              bio="Sarah specialises in working with younger learners aged 4–7. She creates fun, engaging activities that help children build confidence through play and exploration."
-              specialisation="Early Childhood Development, Play-Based Learning"
-            />
-            <CoachCard
-              name="Coach Marcus"
-              role="Programme Coach"
-              bio="Marcus works with our older learners to develop advanced communication and leadership skills. He emphasises practical application and real-world scenarios."
-              specialisation="Teen Leadership, Critical Thinking"
-            />
+            <Reveal index={0}>
+              <CoachCard
+                name="Coach Alfred"
+                role="Founder & Lead Coach"
+                bio="Alfred brings years of experience in youth development and communication training. His passion is helping learners discover their unique voice and build genuine confidence."
+                specialisation="Leadership Development, Youth Empowerment"
+              />
+            </Reveal>
+            <Reveal index={1}>
+              <CoachCard
+                name="Coach Sarah"
+                role="Senior Coach"
+                bio="Sarah specialises in working with younger learners aged 4–7. She creates fun, engaging activities that help children build confidence through play and exploration."
+                specialisation="Early Childhood Development, Play-Based Learning"
+              />
+            </Reveal>
+            <Reveal index={2}>
+              <CoachCard
+                name="Coach Marcus"
+                role="Programme Coach"
+                bio="Marcus works with our older learners to develop advanced communication and leadership skills. He emphasises practical application and real-world scenarios."
+                specialisation="Teen Leadership, Critical Thinking"
+              />
+            </Reveal>
           </div>
         </Container>
       </Section>
@@ -296,15 +295,17 @@ export default function About() {
                 description:
                   "Our programmes are designed as a journey. Learners progress through stages and can continue developing advanced skills.",
               },
-            ].map((item) => (
-              <Card key={item.title} className="flex flex-col">
-                <h4 className="mb-3 font-bold text-text-primary">
-                  {item.title}
-                </h4>
-                <p className="text-sm leading-relaxed text-text-secondary">
-                  {item.description}
-                </p>
-              </Card>
+            ].map((item, index) => (
+              <Reveal key={item.title} index={index}>
+                <Card className="flex h-full flex-col">
+                  <h3 className="mb-3 font-bold text-text-primary">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-text-secondary">
+                    {item.description}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -319,7 +320,7 @@ export default function About() {
               subtitle="Meet our team, learn more about our programmes and discover how Budding Voice can support your child's growth."
             />
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
               <Button
                 variant="primary"
                 size="lg"
@@ -329,7 +330,7 @@ export default function About() {
                 Book a Trial Class
               </Button>
               <Button
-                variant="secondary"
+                variant="tertiary"
                 size="lg"
                 href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"

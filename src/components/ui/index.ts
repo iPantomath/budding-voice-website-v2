@@ -5,3 +5,8 @@ export { SectionHeading, type SectionHeadingProps } from "./SectionHeading";
 export { Card, type CardProps } from "./Card";
 export { Badge, type BadgeProps } from "./Badge";
 export { Link, type LinkProps } from "./Link";
+export { Reveal, type RevealProps } from "./Reveal";
+export {
+  DecorativeBackground,
+  type DecorativeBackgroundProps,
+} from "./DecorativeBackground";

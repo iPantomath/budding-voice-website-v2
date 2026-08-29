@@ -24,16 +24,13 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
           className
         )}
       >
-        <div className="mb-4 flex items-start justify-between gap-4">
-          <div className="flex gap-1" aria-label="5 out of 5 stars">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="h-5 w-5 fill-orange text-orange"
-                aria-hidden="true"
-              />
-            ))}
-          </div>
+        <div className="mb-2 flex items-start justify-between gap-4">
+          <span
+            aria-hidden="true"
+            className="font-serif text-5xl leading-none text-orange/25"
+          >
+            &ldquo;
+          </span>
           {isPlaceholder && (
             <Badge variant="secondary" className="whitespace-nowrap text-xs">
               PLACEHOLDER
@@ -41,9 +38,17 @@ const TestimonialCard = React.forwardRef<HTMLDivElement, TestimonialCardProps>(
           )}
         </div>
 
-        <p className="mb-6 leading-relaxed text-text-secondary italic">
-          &ldquo;{quote}&rdquo;
-        </p>
+        <p className="mb-5 leading-relaxed text-text-primary">{quote}</p>
+
+        <div className="mb-6 flex gap-1" aria-label="5 out of 5 stars">
+          {[...Array(5)].map((_, i) => (
+            <Star
+              key={i}
+              className="h-4 w-4 fill-orange text-orange"
+              aria-hidden="true"
+            />
+          ))}
+        </div>
 
         <div className="border-t border-light-grey pt-4">
           <p className="font-semibold text-text-primary">{name}</p>

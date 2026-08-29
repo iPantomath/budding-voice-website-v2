@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui";
@@ -12,11 +13,21 @@ export interface NavbarProps {
 }
 
 const SCROLL_THRESHOLD = 50;
+const MOBILE_MENU_ID = "mobile-navigation";
 
 const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
   ({ transparent = true }, ref) => {
+    const pathname = usePathname();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const menuToggleRef = useRef<HTMLButtonElement>(null);
+
+    const closeMobileMenu = (returnFocus: boolean) => {
+      setIsMobileMenuOpen(false);
+      if (returnFocus) {
+        menuToggleRef.current?.focus();
+      }
+    };
 
     useEffect(() => {
       const handleScroll = () => {
@@ -25,7 +36,7 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
       const handleKeyDown = (e: KeyboardEvent) => {
         if (e.key === "Escape" && isMobileMenuOpen) {
-          setIsMobileMenuOpen(false);
+          closeMobileMenu(true);
         }
       };
 
@@ -63,19 +74,25 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* Desktop Navigation */}
             <div className="hidden items-center gap-8 md:flex">
-              {navigationLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors duration-200",
-                    "text-text-secondary hover:text-orange",
-                    "focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 rounded px-2 py-1"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navigationLinks.map((link) => {
+                const isCurrent = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    aria-current={isCurrent ? "page" : undefined}
+                    className={cn(
+                      "text-sm font-medium transition-colors duration-200",
+                      isCurrent
+                        ? "text-orange"
+                        : "text-text-secondary hover:text-orange",
+                      "focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2 rounded px-2 py-1"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* CTA Button (Desktop) */}
@@ -87,10 +104,12 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* Mobile Menu Button */}
             <button
+              ref={menuToggleRef}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="rounded-lg p-3 text-text-primary transition-colors hover:bg-light-grey md:hidden"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
+              aria-controls={MOBILE_MENU_ID}
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -102,22 +121,32 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
           {/* Mobile Navigation */}
           {isMobileMenuOpen && (
-            <div className="border-t border-light-grey py-4 md:hidden">
+            <div
+              id={MOBILE_MENU_ID}
+              className="border-t border-light-grey py-4 md:hidden"
+            >
               <div className="flex flex-col gap-4">
-                {navigationLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={cn(
-                      "block rounded-lg px-4 py-2.5 text-base font-medium",
-                      "text-text-secondary hover:bg-light-grey hover:text-orange",
-                      "transition-colors duration-200"
-                    )}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {navigationLinks.map((link) => {
+                  const isCurrent = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      aria-current={isCurrent ? "page" : undefined}
+                      className={cn(
+                        "block rounded-lg px-4 py-2.5 text-base font-medium",
+                        "focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2",
+                        isCurrent
+                          ? "text-orange"
+                          : "text-text-secondary hover:bg-light-grey hover:text-orange",
+                        "transition-colors duration-200"
+                      )}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                })}
                 <Button
                   variant="primary"
                   size="md"

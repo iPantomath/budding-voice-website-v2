@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { AlertTriangle } from "lucide-react";
 import { classifyError, logError } from "@/lib/errorHandler";
-import { UI_COLORS } from "@/constants";
+import { Container, Button } from "@/components/ui";
 
 export default function Error({
   error,
@@ -19,31 +20,35 @@ export default function Error({
   const appError = classifyError(error);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6 py-12">
-      <div className="max-w-2xl text-center">
-        <h1 className="mb-2 text-4xl font-bold text-gray-900">
-          {appError.severity === "critical" ? "⚠️ Error" : "⚠️ Warning"}
-        </h1>
-        <h2 className="mb-4 text-lg font-semibold text-gray-700">
-          {appError.type.charAt(0).toUpperCase() + appError.type.slice(1)} Error
-        </h2>
-        <p className="mb-8 text-lg text-gray-600">{appError.userMessage}</p>
-
-        {process.env.NODE_ENV === "development" && (
-          <div className="mb-8 rounded-lg bg-gray-100 p-4 text-left">
-            <p className="text-sm font-mono text-gray-700">
-              <strong>Debug Info:</strong> {appError.message}
-            </p>
+    <div className="flex flex-1 items-center justify-center px-6 py-20">
+      <Container size="sm" noPadding>
+        <div className="text-center">
+          <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-orange/10">
+            <AlertTriangle className="h-7 w-7 text-orange" aria-hidden="true" />
           </div>
-        )}
+          <h1 className="mb-3 text-3xl font-bold text-text-primary">
+            {appError.severity === "critical" ? "Something went wrong" : "A small hiccup"}
+          </h1>
+          <p className="mb-2 text-sm font-medium uppercase tracking-wide text-text-secondary">
+            {appError.type.charAt(0).toUpperCase() + appError.type.slice(1)} Error
+          </p>
+          <p className="mb-8 leading-relaxed text-text-secondary">
+            {appError.userMessage}
+          </p>
 
-        <button
-          onClick={reset}
-          className={`inline-block rounded-lg bg-${UI_COLORS.primary} px-6 py-3 font-semibold text-white transition-colors hover:bg-opacity-90`}
-        >
-          Try Again
-        </button>
-      </div>
-    </main>
+          {process.env.NODE_ENV === "development" && (
+            <div className="mb-8 rounded-lg bg-light-grey p-4 text-left">
+              <p className="font-mono text-sm text-text-secondary">
+                <strong>Debug Info:</strong> {appError.message}
+              </p>
+            </div>
+          )}
+
+          <Button variant="primary" size="lg" onClick={reset}>
+            Try Again
+          </Button>
+        </div>
+      </Container>
+    </div>
   );
 }

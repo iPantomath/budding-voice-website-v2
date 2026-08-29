@@ -22,9 +22,13 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
     return (
       <footer
         ref={ref}
-        className={cn("border-t border-light-grey bg-white", className)}
+        className={cn("relative border-t border-light-grey bg-white", className)}
         {...props}
       >
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange/40 to-transparent"
+        />
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-12 sm:py-16">
           {/* Footer Content Grid */}
           <div className="mb-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">

@@ -1,6 +1,15 @@
-import Image from "next/image";
-import { Container, Section, SectionHeading, Button, Card } from "@/components/ui";
+import { Check, ArrowRight } from "lucide-react";
+import {
+  Container,
+  Section,
+  SectionHeading,
+  Button,
+  Card,
+  Reveal,
+  DecorativeBackground,
+} from "@/components/ui";
 import { HeroSection } from "@/components/hero";
+import { Timeline } from "@/components/timeline";
 import { PROGRAMMES } from "@/constants/content";
 import {
   generatePageMetadata,
@@ -55,28 +64,40 @@ export default function OratorPage() {
       />
       {/* Hero Section */}
       <HeroSection
+        eyebrow="Ages 8–12 · Orator Programme"
         headline={`${programme.name}: Building Confident Communicators`}
         supportingText={programme.description}
         primaryCTAText="Book a Trial Class"
         secondaryCTAText="WhatsApp Us"
         secondaryCTAHref="https://wa.me/1234567890"
+        showVisual={false}
       />
 
-      {/* Student Presentation Visual Placeholder */}
+      {/* What Makes Orator Different */}
       <Section padding="md">
         <Container>
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-dark-grey/20 bg-light-grey">
-            <Image
-              src={SITE_CONFIG.placeholderImage}
-              alt="Orator student presentation placeholder — real showcase imagery coming soon"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 1024px, 100vw"
+          <div className="relative overflow-hidden rounded-2xl border border-orange/15 bg-gradient-to-br from-orange/5 via-white to-light-grey/50 p-8 sm:p-10">
+            <DecorativeBackground
+              variant="dot-grid"
+              className="right-0 top-0 opacity-50"
             />
-            <div className="absolute inset-0 flex items-end justify-center bg-gradient-to-t from-black/60 to-transparent p-4">
-              <p className="text-xs font-medium text-white">
-                Placeholder — real Budding Voice showcase imagery coming soon
-              </p>
+            <p className="relative mb-6 text-xs font-semibold uppercase tracking-wider text-orange">
+              What Makes Orator Different
+            </p>
+            <div className="relative grid gap-5 sm:grid-cols-2">
+              {programme.features.map((feature, index) => (
+                <Reveal key={feature} index={index} delay={0.05}>
+                  <div className="flex items-start gap-3">
+                    <div
+                      aria-hidden="true"
+                      className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white"
+                    >
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                    </div>
+                    <p className="text-text-secondary">{feature}</p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </Container>
@@ -111,8 +132,11 @@ export default function OratorPage() {
                   "Receiving feedback and improving continuously",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-4">
-                    <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white text-sm font-bold">
-                      ✓
+                    <div
+                      aria-hidden="true"
+                      className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white"
+                    >
+                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
                     </div>
                     <span>{item}</span>
                   </li>
@@ -136,25 +160,27 @@ export default function OratorPage() {
           />
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {programme.learningOutcomes.map((outcome) => (
-              <Card key={outcome} className="flex flex-col">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange/10">
-                  <div className="h-8 w-8 rounded-full bg-orange" />
-                </div>
-                <h3 className="font-bold text-text-primary">{outcome}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-text-secondary">
-                  {outcome === "Presentation skills" &&
-                    "Children learn to organise thoughts, deliver presentations and engage audiences."}
-                  {outcome === "Storytelling" &&
-                    "Children develop narrative skills, learn to captivate listeners and express ideas compellingly."}
-                  {outcome === "Teamwork" &&
-                    "Children practise collaboration, listening to teammates and contributing meaningfully to group work."}
-                  {outcome === "Confidence" &&
-                    "Children feel assured speaking in front of others, asking questions and participating in class."}
-                  {outcome === "Communication" &&
-                    "Children learn to express ideas clearly, listen actively and adapt their communication to audiences."}
-                </p>
-              </Card>
+            {programme.learningOutcomes.map((outcome, index) => (
+              <Reveal key={outcome} index={index}>
+                <Card className="flex h-full flex-col">
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange/10">
+                    <div className="h-8 w-8 rounded-full bg-orange" />
+                  </div>
+                  <h3 className="font-bold text-text-primary">{outcome}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-text-secondary">
+                    {outcome === "Presentation skills" &&
+                      "Children learn to organise thoughts, deliver presentations and engage audiences."}
+                    {outcome === "Storytelling" &&
+                      "Children develop narrative skills, learn to captivate listeners and express ideas compellingly."}
+                    {outcome === "Teamwork" &&
+                      "Children practise collaboration, listening to teammates and contributing meaningfully to group work."}
+                    {outcome === "Confidence" &&
+                      "Children feel assured speaking in front of others, asking questions and participating in class."}
+                    {outcome === "Communication" &&
+                      "Children learn to express ideas clearly, listen actively and adapt their communication to audiences."}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -171,48 +197,36 @@ export default function OratorPage() {
               maxWidth={false}
             />
 
-            <div className="mt-12 space-y-8">
-              {[
-                {
-                  title: "Ice-Breaker & Connection",
-                  description:
-                    "We start by building community. Children connect with peers through games and activities that help them feel relaxed and ready to participate.",
-                },
-                {
-                  title: "Skill-Building Activity",
-                  description:
-                    "Each week focuses on a specific communication skill: storytelling, voice projection, body language, or handling nervousness. Children learn through interactive activities, not lectures.",
-                },
-                {
-                  title: "Practise in Small Groups",
-                  description:
-                    "Children apply the skill in small group activities. This gives everyone speaking practice in a lower-pressure environment before moving to larger presentations.",
-                },
-                {
-                  title: "Individual Presentations",
-                  description:
-                    "Children deliver short presentations to the full group. Our coaches provide supportive, constructive feedback that helps them understand what they did well and what to work on.",
-                },
-                {
-                  title: "Reflection & Celebration",
-                  description:
-                    "We celebrate each child's effort and progress. Children reflect on what they learned and set goals for next week.",
-                },
-              ].map((activity, index) => (
-                <div key={activity.title} className="flex gap-6">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange text-white font-bold">
-                    {index + 1}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="mb-2 font-semibold text-text-primary">
-                      {activity.title}
-                    </h4>
-                    <p className="text-text-secondary leading-relaxed">
-                      {activity.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-12">
+              <Timeline
+                steps={[
+                  {
+                    title: "Ice-Breaker & Connection",
+                    description:
+                      "We start by building community. Children connect with peers through games and activities that help them feel relaxed and ready to participate.",
+                  },
+                  {
+                    title: "Skill-Building Activity",
+                    description:
+                      "Each week focuses on a specific communication skill: storytelling, voice projection, body language, or handling nervousness. Children learn through interactive activities, not lectures.",
+                  },
+                  {
+                    title: "Practise in Small Groups",
+                    description:
+                      "Children apply the skill in small group activities. This gives everyone speaking practice in a lower-pressure environment before moving to larger presentations.",
+                  },
+                  {
+                    title: "Individual Presentations",
+                    description:
+                      "Children deliver short presentations to the full group. Our coaches provide supportive, constructive feedback that helps them understand what they did well and what to work on.",
+                  },
+                  {
+                    title: "Reflection & Celebration",
+                    description:
+                      "We celebrate each child's effort and progress. Children reflect on what they learned and set goals for next week.",
+                  },
+                ]}
+              />
             </div>
           </div>
         </Container>
@@ -257,13 +271,15 @@ export default function OratorPage() {
                   description:
                     "The showcase becomes a proud memory that motivates children to continue developing these important skills.",
                 },
-              ].map((item) => (
-                <Card key={item.title}>
-                  <h4 className="font-bold text-text-primary mb-2">{item.title}</h4>
-                  <p className="text-sm text-text-secondary leading-relaxed">
-                    {item.description}
-                  </p>
-                </Card>
+              ].map((item, index) => (
+                <Reveal key={item.title} index={index}>
+                  <Card className="h-full">
+                    <h3 className="font-bold text-text-primary mb-2">{item.title}</h3>
+                    <p className="text-sm text-text-secondary leading-relaxed">
+                      {item.description}
+                    </p>
+                  </Card>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -303,16 +319,18 @@ export default function OratorPage() {
                 description:
                   "Children present to parents and the community, demonstrating all they&apos;ve learned.",
               },
-            ].map((item) => (
-              <Card key={item.label} className="flex flex-col">
-                <p className="text-sm font-medium text-orange mb-2">{item.label}</p>
-                <h3 className="text-2xl font-bold text-text-primary mb-3">
-                  {item.value}
-                </h3>
-                <p className="text-text-secondary leading-relaxed">
-                  {item.description}
-                </p>
-              </Card>
+            ].map((item, index) => (
+              <Reveal key={item.label} index={index}>
+                <Card className="flex h-full flex-col">
+                  <p className="text-sm font-medium text-orange mb-2">{item.label}</p>
+                  <h3 className="text-2xl font-bold text-text-primary mb-3">
+                    {item.value}
+                  </h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    {item.description}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -344,7 +362,10 @@ export default function OratorPage() {
                   "Develop critical thinking and independent voice",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-4">
-                    <div className="text-orange font-bold">→</div>
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="mt-1 h-4 w-4 flex-shrink-0 text-orange"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -368,14 +389,16 @@ export default function OratorPage() {
 
           <div className="mt-12 space-y-6 max-w-3xl mx-auto">
             {programme.faqs.map((faq, index) => (
-              <Card key={index} className="flex flex-col">
-                <h4 className="mb-3 font-bold text-text-primary text-lg">
-                  {faq.question}
-                </h4>
-                <p className="text-text-secondary leading-relaxed">
-                  {faq.answer}
-                </p>
-              </Card>
+              <Reveal key={faq.question} index={index} delay={0.06}>
+                <Card className="flex flex-col">
+                  <h3 className="mb-3 font-bold text-text-primary text-lg">
+                    {faq.question}
+                  </h3>
+                  <p className="text-text-secondary leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </Card>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -390,7 +413,7 @@ export default function OratorPage() {
               subtitle="Book a trial class and experience how Orator builds confident communicators."
             />
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center sm:gap-6">
+            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
               <Button
                 variant="primary"
                 size="lg"
@@ -400,7 +423,7 @@ export default function OratorPage() {
                 Book a Trial Class
               </Button>
               <Button
-                variant="secondary"
+                variant="tertiary"
                 size="lg"
                 href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"
