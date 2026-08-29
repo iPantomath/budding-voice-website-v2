@@ -11,6 +11,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
       { label: "Home", href: "/" },
       { label: "About", href: "/about" },
       { label: "Testimonials", href: "/testimonials" },
+      { label: "Contact", href: "/contact" },
     ];
 
     const programmeLinks = [

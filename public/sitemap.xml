@@ -46,4 +46,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://budding-voice.com/contact</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>

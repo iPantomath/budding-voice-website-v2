@@ -1,8 +1,20 @@
-export const navigationLinks = [
+export interface NavigationLink {
+  label: string;
+  href?: string;
+  children?: NavigationLink[];
+}
+
+export const navigationLinks: NavigationLink[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Kaizen", href: "/programmes/kaizen" },
-  { label: "Orator", href: "/programmes/orator" },
-  { label: "APEX", href: "/programmes/apex" },
+  { label: "About Us", href: "/about" },
+  {
+    label: "Programmes",
+    children: [
+      { label: "Kaizen", href: "/programmes/kaizen" },
+      { label: "Orator", href: "/programmes/orator" },
+      { label: "APEX", href: "/programmes/apex" },
+    ],
+  },
   { label: "Testimonials", href: "/testimonials" },
-] as const;
+  { label: "Contact", href: "/contact" },
+];
