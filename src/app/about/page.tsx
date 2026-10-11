@@ -86,19 +86,19 @@ export default function About() {
           <div className="mt-12 grid gap-12 md:grid-cols-2">
             <div>
               <h3 className="mb-4 text-2xl font-bold text-text-primary">
-                Our Mission
+                Our Vision
               </h3>
               <p className="leading-relaxed text-text-secondary">
-                Develop confident communicators who lead with purpose.
+                To nurture confident, expressive young leaders who know their potential
               </p>
             </div>
 
             <div>
               <h3 className="mb-4 text-2xl font-bold text-text-primary">
-                Our Vision
+                Our Mission
               </h3>
               <p className="leading-relaxed text-text-secondary">
-                Raise a generation of confident, expressive and thoughtful leaders.
+                We help children and teens speak confidently, express themselves clearly, build strong character, and discover their potential
               </p>
             </div>
           </div>
