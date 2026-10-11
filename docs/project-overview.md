@@ -297,7 +297,7 @@ The Budding Voice website follows a structured 15-phase development roadmap. Pha
 - Hero section with headline and CTAs
 - "Does Your Child..." parent pain-point section
 - "Why Budding Voice" benefits section
-- Programme cards (Kaizen, Orator, APEX)
+- Programme cards (Kaizen, Orator, Apex)
 - Learning philosophy section
 - Testimonials section
 - Final CTA section
@@ -321,7 +321,7 @@ The Budding Voice website follows a structured 15-phase development roadmap. Pha
 
 - Kaizen detail page (4–7 years)
 - Orator detail page (8–12 years)
-- APEX detail page (13–17 years)
+- Apex detail page (13–17 years)
 - Programme-specific CTAs and imagery
 
 ### Phase 6 — Schools/Corporate Pages
@@ -481,7 +481,7 @@ A new visitor who has never heard of Budding Voice should be able to understand 
 
 1. **What Budding Voice is** — A Communication & Leadership Centre (not a tuition centre or public speaking academy)
 2. **Who Budding Voice serves** — Children aged 4–17, and potentially schools/organizations
-3. **What programmes/services are offered** — Kaizen, Orator, APEX (by age group)
+3. **What programmes/services are offered** — Kaizen, Orator, Apex (by age group)
 4. **Why Budding Voice is credible and trustworthy** — Through testimonials, clear methodology, professional presentation
 5. **What action the visitor should take next** — Book a trial class, contact via WhatsApp, or explore programmes
 

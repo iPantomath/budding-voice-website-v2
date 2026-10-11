@@ -163,7 +163,7 @@ Learn More
 
 ---
 
-### APEX
+### Apex
 
 Age
 

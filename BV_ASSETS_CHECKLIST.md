@@ -54,7 +54,7 @@ For each coach, provide:
 | Full Name | ✅ Yes | Text |
 | Role/Title | ✅ Yes | e.g., "Lead Coach", "Senior Facilitator" |
 | Biography | ✅ Yes | 2–3 sentences about background, experience, approach |
-| Specialisation | ✅ Yes | e.g., "Kaizen", "Orator", "APEX" or multiple |
+| Specialisation | ✅ Yes | e.g., "Kaizen", "Orator", "Apex" or multiple |
 | Professional Photo | ✅ Yes | Headshot, professional quality, 400x400px minimum |
 | Email (optional) | ⭕ No | If they need direct contact |
 
@@ -97,7 +97,7 @@ Photo: [headshot file]
 - [ ] **Orator Programme** — 1–2 images of primary students (8–12 years):
   - Presenting, collaborating, speaking
   
-- [ ] **APEX Programme** — 1–2 images of teenagers (13–17 years):
+- [ ] **Apex Programme** — 1–2 images of teenagers (13–17 years):
   - Leading, discussing, presenting confidently
 
 #### Learning Philosophy Section
@@ -118,7 +118,7 @@ Photo: [headshot file]
 
 ### 4. Programme-Specific Content & Images
 
-For each programme (Kaizen, Orator, APEX):
+For each programme (Kaizen, Orator, Apex):
 
 #### Programme Details
 - [ ] **Class Schedule:**
@@ -275,7 +275,7 @@ Confirm and provide:
 1. About page content (mission, vision, values, story)
 2. 3+ coach information + professional headshots
 3. Homepage hero image/video
-4. Programme section images (Kaizen, Orator, APEX)
+4. Programme section images (Kaizen, Orator, Apex)
 
 ### 🟠 HIGH (Needed SOON for Phase 5–7)
 5. Programme details & learning outcomes

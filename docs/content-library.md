@@ -122,7 +122,7 @@ Learn More
 
 ---
 
-### APEX
+### Apex
 
 Age
 
@@ -280,7 +280,7 @@ Book a Trial Class
 
 ---
 
-## APEX
+## Apex
 
 ### Tagline
 
@@ -288,7 +288,7 @@ Developing Tomorrow's Leaders.
 
 ### Description
 
-APEX prepares teenagers to communicate effectively, think critically and lead with confidence in school and beyond.
+Apex prepares teenagers to communicate effectively, think critically and lead with confidence in school and beyond.
 
 ### Outcomes
 

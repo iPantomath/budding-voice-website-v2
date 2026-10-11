@@ -12,7 +12,7 @@
 | 2 | Global Layout & Navigation | ✅ COMPLETE | Navbar, footer, shared components |
 | 3 | Homepage Implementation | ✅ COMPLETE | Functional homepage (visual polish pending) |
 | 4 | About Page + Visual Assets | ⏭️ NEXT | Begin after Phase 3 review complete |
-| 5 | Programmes Detail Pages | 📋 V1 | Kaizen, Orator, APEX detail pages |
+| 5 | Programmes Detail Pages | 📋 V1 | Kaizen, Orator, Apex detail pages |
 | 6 | Schools/Corporate Pages | ⏸️ DEFERRED | Future enhancement, not V1 |
 | 7 | Testimonials Page | 📋 V1 | Dedicated testimonials section |
 | 8 | Resources/Blog | ⏸️ DEFERRED | Future enhancement, not V1 |

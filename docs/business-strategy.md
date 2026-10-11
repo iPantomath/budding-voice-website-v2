@@ -259,7 +259,7 @@ The website should balance professionalism with personality. It should use real 
 
 **Key sections:**
 
-- Programme pathways by age: Kaizen, Orator, APEX and relevant customised programmes.
+- Programme pathways by age: Kaizen, Orator, Apex and relevant customised programmes.
 - A clear explanation of the Budding Voice learning approach and four-month, 16-week journey.
 - Student growth stories, showcases, parent voices and partner feedback.
 - Meet the coaches and the values behind the team.

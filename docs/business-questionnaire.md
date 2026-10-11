@@ -84,10 +84,10 @@ Our main services include:
 - **Orator programme** - for primary-age learners, focusing on speech structure, storytelling, vocal delivery, body language, confidence and thinking skills.
   - *Note for Website page creation: The Orator page should be Children appealing for 8-12 years old, primary school students. The visitors will be mainly parents but they might show it to the children to attract their attention to attend the class.*
 
-- **APEX programme** - for teenagers, focusing on purposeful communication, critical thinking, leadership, presentation skills and personal development.
+- **Apex programme** - for teenagers, focusing on purposeful communication, critical thinking, leadership, presentation skills and personal development.
   - *Note for Website page creation: The Apex page should be Children appealing for 13-17 years old, secondary school students. The visitors will be mainly parents but they might show it to the children to attract their attention to attend the class.*
 
-- **Kaizen/Orator/APEX** - Four-month, 16-week youth learning journeys, normally ending with a showcase or open sharing so students can apply what they have learned.
+- **Kaizen/Orator/Apex** - Four-month, 16-week youth learning journeys, normally ending with a showcase or open sharing so students can apply what they have learned.
 
 - **Collaboration/Partnership** - Preschool and school partnerships, including curriculum planning, coach preparation, learning materials, student progress direction and showcase preparation.
 
@@ -315,7 +315,7 @@ The website must present Budding Voice as more than a conventional public speaki
 - The website has three key audiences: parents, education partners and corporate decision-makers. Each audience needs a clear pathway and call to action.
 - The primary brand message should remain child- and learner-centred: help every learner find their voice, know their potential and communicate with purpose.
 - Use the brand essence "Confidence, Character, Connection" consistently.
-- Show programmes by age so parents can quickly understand the learner journey from Kaizen to Orator to APEX and beyond.
+- Show programmes by age so parents can quickly understand the learner journey from Kaizen to Orator to Apex and beyond.Apex
 - Use real student stories, parent testimonials, school-partner feedback, class photos and short videos to build trust.
 - The tone should be warm, human, encouraging and professional. Avoid language that feels too academic, too childish, overly sales-driven or full of jargon.
 - The website should be video-friendly because demonstrations of student growth and class energy communicate the experience more effectively than text alone.
