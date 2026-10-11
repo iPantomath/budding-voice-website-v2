@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { cn } from "@/utils/cn";
@@ -17,7 +18,7 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
     const programmeLinks = [
       { label: "Kaizen (4-7 years)", href: "/programmes/kaizen" },
       { label: "Orator (8-12 years)", href: "/programmes/orator" },
-      { label: "APEX (13+ years)", href: "/programmes/apex" },
+      { label: "Apex (13+ years)", href: "/programmes/apex" },
     ];
 
     return (
@@ -36,9 +37,13 @@ const Footer = React.forwardRef<HTMLElement, FooterProps>(
             {/* Branding Column */}
             <div className="lg:col-span-1">
               <Link href="/" className="inline-flex items-center gap-2">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange">
-                  <span className="text-base font-bold text-white">BV</span>
-                </div>
+                <Image
+                  src="/images/brand/bv-logo.webp"
+                  alt="Budding Voice logo"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12"
+                />
                 <div className="flex flex-col">
                   <span className="font-bold text-text-primary">
                     Budding Voice

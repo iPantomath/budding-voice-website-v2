@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -15,6 +16,7 @@ export interface HeroSectionProps {
   secondaryCTAText?: string;
   secondaryCTAHref?: string;
   showVisual?: boolean;
+  image?: { src: string; alt: string };
   className?: string;
 }
 
@@ -29,6 +31,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       secondaryCTAText = "WhatsApp Us",
       secondaryCTAHref = "https://wa.me/1234567890",
       showVisual = true,
+      image,
       className,
     },
     ref
@@ -76,7 +79,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               <Reveal index={3}>
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-3 lg:justify-start">
                   <Button
-                    variant="primary"
+                    variant="whatsapp"
                     size="lg"
                     href={primaryCTAHref}
                     className="w-full sm:w-auto"
@@ -84,7 +87,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
                     {primaryCTAText}
                   </Button>
                   <Button
-                    variant="tertiary"
+                    variant="whatsapp-outline"
                     size="lg"
                     href={secondaryCTAHref}
                     leftIcon={<MessageCircle className="h-4 w-4" />}
@@ -96,7 +99,22 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
               </Reveal>
             </div>
 
-            {showVisual && (
+            {showVisual && image && (
+              <Reveal index={2}>
+                <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2rem] sm:aspect-square">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 480px, 90vw"
+                    className="object-cover"
+                  />
+                </div>
+              </Reveal>
+            )}
+
+            {showVisual && !image && (
               <Reveal index={2} className="hidden lg:block">
                 <div className="relative mx-auto aspect-square w-full max-w-md">
                   <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-orange/15 via-orange/5 to-transparent" />

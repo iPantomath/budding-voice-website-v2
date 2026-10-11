@@ -126,7 +126,7 @@ export default function Testimonials() {
 
             <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
               <Button
-                variant="primary"
+                variant="whatsapp"
                 size="lg"
                 href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"
@@ -134,7 +134,7 @@ export default function Testimonials() {
                 Book a Trial Class
               </Button>
               <Button
-                variant="tertiary"
+                variant="whatsapp-outline"
                 size="lg"
                 href="https://wa.me/1234567890"
                 className="w-full sm:w-auto"

@@ -4,7 +4,13 @@ import { cn } from "@/utils/cn";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "tertiary" | "ghost";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "ghost"
+    | "whatsapp"
+    | "whatsapp-outline";
   size?: "sm" | "md" | "lg" | "xl";
   fullWidth?: boolean;
   isLoading?: boolean;
@@ -40,6 +46,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         "bg-white text-orange border-2 border-orange hover:bg-orange/5 hover:-translate-y-0.5 active:scale-95 active:translate-y-0",
       tertiary: "text-orange hover:bg-orange/10 active:scale-95",
       ghost: "text-black hover:bg-light-grey active:scale-95",
+      whatsapp:
+        "bg-whatsapp text-white hover:bg-whatsapp-dark hover:-translate-y-0.5 active:scale-95 active:translate-y-0 shadow-md hover:shadow-lg",
+      "whatsapp-outline":
+        "bg-white text-whatsapp-dark border-2 border-whatsapp hover:bg-whatsapp/10 hover:-translate-y-0.5 active:scale-95 active:translate-y-0",
     };
 
     const sizeStyles = {

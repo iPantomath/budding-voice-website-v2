@@ -125,7 +125,7 @@ const ContactForm = () => {
 
         {whatsappHref ? (
           <Button
-            variant="primary"
+            variant="whatsapp"
             size="lg"
             href={whatsappHref}
             className="mt-6 w-full sm:w-auto"
@@ -135,7 +135,7 @@ const ContactForm = () => {
         ) : (
           <div className="mt-6">
             <Button
-              variant="primary"
+              variant="whatsapp"
               size="lg"
               disabled
               aria-disabled="true"

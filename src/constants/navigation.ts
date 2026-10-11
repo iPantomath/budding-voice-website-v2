@@ -10,9 +10,9 @@ export const navigationLinks: NavigationLink[] = [
   {
     label: "Programmes",
     children: [
-      { label: "Kaizen", href: "/programmes/kaizen" },
-      { label: "Orator", href: "/programmes/orator" },
-      { label: "APEX", href: "/programmes/apex" },
+      { label: "Kaizen (Age 4-7)", href: "/programmes/kaizen" },
+      { label: "Orator (Age 8-12)", href: "/programmes/orator" },
+      { label: "Apex (Age 13-17)", href: "/programmes/apex" },
     ],
   },
   { label: "Testimonials", href: "/testimonials" },

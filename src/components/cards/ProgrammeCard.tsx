@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@/components/ui/Card";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
 
@@ -9,24 +9,36 @@ export interface ProgrammeCardProps {
   tagline?: string;
   description: string;
   href: string;
-  /** 1-based position in the age-progression sequence (Kaizen=1, Orator=2, APEX=3). */
+  /** 1-based position in the age-progression sequence (Kaizen=1, Orator=2, Apex=3). */
   stage?: number;
+  image?: { src: string; alt: string };
   className?: string;
 }
 
 const ProgrammeCard = React.forwardRef<HTMLDivElement, ProgrammeCardProps>(
   (
-    { name, ageRange, tagline, description, href, stage, className },
+    { name, ageRange, tagline, description, href, stage, image, className },
     ref
   ) => {
     return (
-      <Card
+      <div
         ref={ref}
         className={cn(
-          "flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg",
+          "flex flex-col overflow-hidden rounded-lg bg-white shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1",
           className
         )}
       >
+        {image && (
+          <div className="relative aspect-[4/3] w-full">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        )}
         <div className="flex-1 space-y-4 p-6 sm:p-8">
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -62,7 +74,7 @@ const ProgrammeCard = React.forwardRef<HTMLDivElement, ProgrammeCardProps>(
             Learn More
           </Button>
         </div>
-      </Card>
+      </div>
     );
   }
 );

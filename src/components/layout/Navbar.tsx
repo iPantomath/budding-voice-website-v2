@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -103,9 +104,14 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-orange">
-                <span className="text-sm font-bold text-white">BV</span>
-              </div>
+              <Image
+                src="/images/brand/bv-logo.webp"
+                alt="Budding Voice logo"
+                width={40}
+                height={40}
+                className="h-10 w-10"
+                priority
+              />
               <span className="hidden font-bold text-text-primary sm:inline">
                 Budding Voice
               </span>
@@ -191,7 +197,7 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* CTA Button (Desktop) */}
             <div className="hidden items-center gap-4 md:flex">
-              <Button variant="primary" size="sm" href="https://wa.me/1234567890">
+              <Button variant="whatsapp" size="sm" href="https://wa.me/1234567890">
                 WhatsApp Us
               </Button>
             </div>
@@ -299,7 +305,7 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
                   );
                 })}
                 <Button
-                  variant="primary"
+                  variant="whatsapp"
                   size="md"
                   href="https://wa.me/1234567890"
                   className="w-full"

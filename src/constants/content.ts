@@ -81,9 +81,9 @@ export const PROGRAMMES: Record<string, ProgrammeDetails> = {
 
   apex: {
     id: "apex",
-    name: "APEX",
+    name: "Apex",
     age: "13-17 years",
-    description: "APEX prepares teenagers to communicate effectively, think critically and lead with confidence in school and beyond.",
+    description: "Apex prepares teenagers to communicate effectively, think critically and lead with confidence in school and beyond.",
     features: [
       "Advanced public speaking and presentation",
       "Leadership and decision-making skills",
@@ -100,16 +100,16 @@ export const PROGRAMMES: Record<string, ProgrammeDetails> = {
     ],
     faqs: [
       {
-        question: "How is APEX different from Orator?",
-        answer: "While Orator builds foundational communication skills, APEX develops advanced communication, leadership and critical thinking. APEX focuses on preparing teenagers for higher education, leadership roles and confident participation in society.",
+        question: "How is Apex different from Orator?",
+        answer: "While Orator builds foundational communication skills, Apex develops advanced communication, leadership and critical thinking. Apex focuses on preparing teenagers for higher education, leadership roles and confident participation in society.",
       },
       {
-        question: "Will APEX help with school presentations and exams?",
-        answer: "Absolutely. APEX equips teenagers with skills for class presentations, group discussions, persuasive communication and handling pressure. Many students find these skills directly applicable in academics and co-curricular activities.",
+        question: "Will Apex help with school presentations and exams?",
+        answer: "Absolutely. Apex equips teenagers with skills for class presentations, group discussions, persuasive communication and handling pressure. Many students find these skills directly applicable in academics and co-curricular activities.",
       },
       {
-        question: "Is APEX just public speaking?",
-        answer: "No. APEX goes beyond public speaking to develop leaders. We work on communication, critical thinking, decision-making, collaboration and character development — preparing teenagers for success in all areas of life.",
+        question: "Is Apex just public speaking?",
+        answer: "No. Apex goes beyond public speaking to develop leaders. We work on communication, critical thinking, decision-making, collaboration and character development — preparing teenagers for success in all areas of life.",
       },
       {
         question: "Can my teenager join mid-year?",
@@ -122,28 +122,31 @@ export const PROGRAMMES: Record<string, ProgrammeDetails> = {
 export const COACHES: Record<string, Coach & { programmes: string[] }> = {
   coach1: {
     id: "coach1",
-    name: "[PLACEHOLDER: Coach 1 Name]",
-    role: "[PLACEHOLDER: Coach 1 Role]",
-    bio: "[PLACEHOLDER: Coach 1 Biography from Budding Voice]",
-    specialisation: "[PLACEHOLDER: Coach 1 Specialisation]",
+    name: "Coach Alfred",
+    role: "Founder & Lead Coach",
+    bio: "Alfred brings years of experience in youth development and communication training. His passion is helping learners discover their unique voice and build genuine confidence.",
+    specialisation: "Leadership Development, Youth Empowerment",
+    image: "/images/coaches/coach-alfred.webp",
     programmes: ["kaizen"],
   },
 
   coach2: {
     id: "coach2",
-    name: "[PLACEHOLDER: Coach 2 Name]",
-    role: "[PLACEHOLDER: Coach 2 Role]",
-    bio: "[PLACEHOLDER: Coach 2 Biography from Budding Voice]",
-    specialisation: "[PLACEHOLDER: Coach 2 Specialisation]",
+    name: "Coach Bryan",
+    role: "Senior Coach",
+    bio: "Bryan specialises in working with younger learners aged 4–7. He creates fun, engaging activities that help children build confidence through play and exploration.",
+    specialisation: "Early Childhood Development, Play-Based Learning",
+    image: "/images/coaches/coach-bryan.webp",
     programmes: ["orator"],
   },
 
   coach3: {
     id: "coach3",
-    name: "[PLACEHOLDER: Coach 3 Name]",
-    role: "[PLACEHOLDER: Coach 3 Role]",
-    bio: "[PLACEHOLDER: Coach 3 Biography from Budding Voice]",
-    specialisation: "[PLACEHOLDER: Coach 3 Specialisation]",
+    name: "Coach Jun Yean",
+    role: "Programme Coach",
+    bio: "Jun Yean works with our older learners to develop advanced communication and leadership skills. He emphasises practical application and real-world scenarios.",
+    specialisation: "Teen Leadership, Critical Thinking",
+    image: "/images/coaches/coach-jun-yean.webp",
     programmes: ["apex"],
   },
 };
@@ -175,7 +178,7 @@ export const TESTIMONIALS: Testimonial[] = [
     author: "[Parent Name — PLACEHOLDER]",
     role: "Parent",
     type: "parent",
-    programme: "APEX",
+    programme: "Apex",
     isPlaceholder: true,
   },
 
