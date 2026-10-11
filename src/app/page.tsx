@@ -150,9 +150,9 @@ export default function Home() {
             <Reveal index={0}>
               <ProgrammeCard
                 name="Kaizen"
-                ageRange="4–7 Years"
+                ageRange="4–7"
                 tagline="Where Confidence Begins"
-                stage={1}
+                // stage={1}
                 description="Build confidence, curiosity and self-expression through fun, engaging activities."
                 href="/programmes/kaizen"
                 image={{
@@ -165,14 +165,14 @@ export default function Home() {
             <Reveal index={1}>
               <ProgrammeCard
                 name="Orator"
-                ageRange="8–12 Years"
+                ageRange="8–12"
                 tagline="Building Confident Communicators"
-                stage={2}
+                // stage={2}
                 description="Develop storytelling, presentation skills and teamwork."
                 href="/programmes/orator"
                 image={{
-                  src: "/images/programmes/orator-movement.webp",
-                  alt: "Orator-age students in a classroom activity",
+                  src: "/images/programmes/orator-homepage-card.webp",
+                  alt: "Smiling Orator students posing together in the classroom",
                 }}
                 className="h-full"
               />
@@ -180,14 +180,14 @@ export default function Home() {
             <Reveal index={2}>
               <ProgrammeCard
                 name="Apex"
-                ageRange="13–17 Years"
+                ageRange="13–17"
                 tagline="Apex Developing Tomorrow's Leaders"
-                stage={3}
+                // stage={3}
                 description="Advanced communication, leadership and critical thinking."
                 href="/programmes/apex"
                 image={{
-                  src: "/images/programmes/apex-presenting.webp",
-                  alt: "A teenage Apex student presenting in class",
+                  src: "/images/programmes/apex-homepage-card.webp",
+                  alt: "A teenage Apex student speaking with expressive gestures",
                 }}
                 className="h-full"
               />
