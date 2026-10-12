@@ -21,7 +21,7 @@ Launch a professional, fast, responsive and trustworthy website that accurately 
 - [ ] Programmes
 - [ ] Kaizen
 - [ ] Orator
-- [ ] APEX
+- [ ] Apex
 - [ ] Schools & Partnerships
 - [ ] Corporate Training
 - [ ] Testimonials

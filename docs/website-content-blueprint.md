@@ -163,7 +163,7 @@ Learn More
 
 ---
 
-### APEX
+### Apex
 
 Age
 
@@ -258,15 +258,15 @@ Summarise Budding Voice's journey using the approved strategy document.
 
 ---
 
-## Mission
+## Vision
 
-Develop confident communicators who lead with purpose.
+To nurture confident, expressive young leaders who know their potential
 
 ---
 
-## Vision
+## Mission
 
-Raise a generation of confident, expressive and thoughtful leaders.
+We help children and teens speak confidently, express themselves clearly, build strong character, and discover their potential
 
 ---
 

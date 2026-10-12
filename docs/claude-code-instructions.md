@@ -341,78 +341,30 @@ Each commit should represent a complete, working feature.
 
 ---
 
-# Build Order
+# Development Roadmap
 
-Implement the project in this sequence.
+**IMPORTANT: The authoritative V1 development roadmap is now documented in:**
 
-Phase 1
+- **Quick Reference:** [`docs/PROJECT_ROADMAP.md`](./PROJECT_ROADMAP.md)
+- **Detailed Roadmap:** [`docs/project-overview.md`](./project-overview.md)
 
-- Initialise project
-- Configure dependencies
-- Configure Tailwind
-- Global layout
+The Budding Voice website follows a **15-phase development roadmap**:
 
----
+## Current Status
 
-Phase 2
+- **Phase 1–3:** ✅ COMPLETE
+- **Phase 4:** ⏭️ NEXT (About Page + Visual Assets Integration)
+- **Phase 5–15:** 📋 V1 Scope (in development sequence)
 
-- Navigation
-- Footer
-- Shared Components
+## Important Notes
 
----
+- **Phases 6, 8, 9:** DEFERRED (not V1 scope)
+- **Phase 15:** Final Pre-Launch Review (launch gate)
+- Development must follow the review workflow defined in [`docs/project-overview.md`](./project-overview.md)
 
-Phase 3
+**Do NOT use any other phase roadmap or build order.**
 
-Homepage
-
----
-
-Phase 4
-
-About
-
-Programmes
-
----
-
-Phase 5
-
-Schools
-
-Corporate
-
----
-
-Phase 6
-
-Testimonials
-
-Resources
-
-Contact
-
----
-
-Phase 7
-
-SEO
-
-Accessibility
-
-Performance
-
-Analytics
-
----
-
-Phase 8
-
-Testing
-
-Final Polish
-
-Deployment
+The old 8-phase roadmap is **superseded** by the current 15-phase roadmap.
 
 ---
 

@@ -10,6 +10,19 @@ Before making any changes, always read the project documentation under `/docs`.
 
 ---
 
+# Current Development Status
+
+**Phase 3 — Homepage Implementation is COMPLETE**
+
+The next phase is **Phase 4 — About Page + Visual Assets Integration**.
+
+For the complete V1 development roadmap with all 15 phases, scope definitions, quality standards, and review workflows, see:
+
+**[`docs/PROJECT_ROADMAP.md`](./docs/PROJECT_ROADMAP.md)** (quick reference)  
+**[`docs/project-overview.md`](./docs/project-overview.md)** (detailed roadmap and acceptance criteria)
+
+---
+
 # Documentation Order
 
 Read these documents before implementing features.

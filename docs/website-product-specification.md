@@ -160,7 +160,7 @@ About
 Programmes
     ├── Kaizen
     ├── Orator
-    └── APEX
+    └── Apex
 
 Schools & Partnerships
 
@@ -270,7 +270,7 @@ Display:
 
 - Kaizen
 - Orator
-- APEX
+- Apex
 
 Each card links to its programme page.
 
@@ -397,7 +397,7 @@ Create individual pages for:
 
 - Kaizen
 - Orator
-- APEX
+- Apex
 
 Each page contains
 
