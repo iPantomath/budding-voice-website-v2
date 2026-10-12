@@ -43,3 +43,7 @@ next-env.d.ts
 
 #Unsed custom agent file
 /.claude/skills-agents/
+
+
+# /res
+/res
