@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { WhatsAppButton } from "@/components/buttons";
 import { Reveal } from "@/components/ui/Reveal";
 import { DecorativeBackground } from "@/components/ui/DecorativeBackground";
 import { MessageCircle } from "lucide-react";
@@ -12,9 +12,7 @@ export interface HeroSectionProps {
   headline: string;
   supportingText: string;
   primaryCTAText?: string;
-  primaryCTAHref?: string;
   secondaryCTAText?: string;
-  secondaryCTAHref?: string;
   showVisual?: boolean;
   image?: { src: string; alt: string };
   className?: string;
@@ -27,9 +25,7 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
       headline,
       supportingText,
       primaryCTAText = "Book a Trial Class",
-      primaryCTAHref = "https://wa.me/1234567890",
       secondaryCTAText = "WhatsApp Us",
-      secondaryCTAHref = "https://wa.me/1234567890",
       showVisual = true,
       image,
       className,
@@ -78,23 +74,17 @@ const HeroSection = React.forwardRef<HTMLDivElement, HeroSectionProps>(
 
               <Reveal index={3}>
                 <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-3 lg:justify-start">
-                  <Button
-                    variant="whatsapp"
-                    size="lg"
-                    href={primaryCTAHref}
-                    className="w-full sm:w-auto"
-                  >
+                  <WhatsAppButton size="lg" className="w-full sm:w-auto">
                     {primaryCTAText}
-                  </Button>
-                  <Button
+                  </WhatsAppButton>
+                  <WhatsAppButton
                     variant="whatsapp-outline"
                     size="lg"
-                    href={secondaryCTAHref}
                     leftIcon={<MessageCircle className="h-4 w-4" />}
                     className="w-full sm:w-auto"
                   >
                     {secondaryCTAText}
-                  </Button>
+                  </WhatsAppButton>
                 </div>
               </Reveal>
             </div>

@@ -1,3 +1,2 @@
-// Section components will be exported here
-// Example: export { CTASection } from './CTASection';
-// Example: export { FeatureSection } from './FeatureSection';
+export { CTASection } from "./CTASection";
+export type { CTASectionProps } from "./CTASection";
