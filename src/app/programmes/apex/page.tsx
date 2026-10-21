@@ -3,11 +3,11 @@ import {
   Container,
   Section,
   SectionHeading,
-  Button,
   Card,
   Reveal,
 } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
+import { CTASection } from "@/components/sections";
 import { PROGRAMMES } from "@/constants/content";
 import {
   generatePageMetadata,
@@ -73,7 +73,6 @@ export default function ApexPage() {
         supportingText={programme.description}
         primaryCTAText="Book a Trial Class"
         secondaryCTAText="WhatsApp Us"
-        secondaryCTAHref="https://wa.me/1234567890"
         image={{
           src: "/images/programmes/apex-showcase.webp",
           alt: "A teenage Apex student speaking confidently at a showcase event",
@@ -192,35 +191,11 @@ export default function ApexPage() {
       </Section>
 
       {/* Final CTA Section */}
-      <Section padding="lg" alternateBackground>
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading
-              title="Prepare for Leadership"
-              subtitle="Book a trial session and experience Apex. See how we develop confident, articulate, thoughtful young leaders."
-            />
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
-              <Button
-                variant="whatsapp"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                Book a Trial Class
-              </Button>
-              <Button
-                variant="whatsapp-outline"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                WhatsApp Us
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CTASection
+        title="Prepare for Leadership"
+        subtitle="Book a trial session and experience Apex. See how we develop confident, articulate, thoughtful young leaders."
+        background="alternate"
+      />
     </>
   );
 }

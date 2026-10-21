@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/utils/cn";
-import { Button } from "@/components/ui";
+import { WhatsAppButton } from "@/components/buttons";
 import { navigationLinks } from "@/constants/navigation";
 
 export interface NavbarProps {
@@ -197,9 +197,7 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
 
             {/* CTA Button (Desktop) */}
             <div className="hidden items-center gap-4 md:flex">
-              <Button variant="whatsapp" size="sm" href="https://wa.me/1234567890">
-                WhatsApp Us
-              </Button>
+              <WhatsAppButton size="sm" />
             </div>
 
             {/* Mobile Menu Button */}
@@ -304,15 +302,11 @@ const Navbar = React.forwardRef<HTMLDivElement, NavbarProps>(
                     </Link>
                   );
                 })}
-                <Button
-                  variant="whatsapp"
+                <WhatsAppButton
                   size="md"
-                  href="https://wa.me/1234567890"
                   className="w-full"
                   onClick={handleMobileLinkClick}
-                >
-                  WhatsApp Us
-                </Button>
+                />
               </div>
             </div>
           )}

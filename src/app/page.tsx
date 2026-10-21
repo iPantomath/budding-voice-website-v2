@@ -3,12 +3,12 @@ import {
   Container,
   Section,
   SectionHeading,
-  Button,
   Card,
   Reveal,
   DecorativeBackground,
 } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
+import { CTASection } from "@/components/sections";
 import { ProgrammeCard, TestimonialCard } from "@/components/cards";
 import { PhotoStrip } from "@/components/gallery";
 import {
@@ -284,35 +284,10 @@ export default function Home() {
       </Section>
 
       {/* Final CTA Section */}
-      <Section padding="lg" className="bg-gradient-to-r from-orange/5 to-orange/10">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading
-              title="Ready to Begin the Journey?"
-              subtitle="Help your child discover confidence, communication and leadership through meaningful learning experiences."
-            />
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
-              <Button
-                variant="whatsapp"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                Book a Trial Class
-              </Button>
-              <Button
-                variant="whatsapp-outline"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                WhatsApp Us
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CTASection
+        title="Ready to Begin the Journey?"
+        subtitle="Help your child discover confidence, communication and leadership through meaningful learning experiences."
+      />
     </>
   );
 }

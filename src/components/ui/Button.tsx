@@ -3,7 +3,8 @@ import Link from "next/link";
 import { cn } from "@/utils/cn";
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onClick"> {
+  onClick?: React.MouseEventHandler<HTMLElement>;
   variant?:
     | "primary"
     | "secondary"
@@ -31,6 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       leftIcon,
       rightIcon,
       href,
+      onClick,
       children,
       ...props
     },
@@ -98,8 +100,22 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     if (href) {
+      if (/^https?:\/\//.test(href)) {
+        return (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={combinedStyles}
+            onClick={onClick}
+          >
+            {content}
+          </a>
+        );
+      }
+
       return (
-        <Link href={href} className={combinedStyles}>
+        <Link href={href} className={combinedStyles} onClick={onClick}>
           {content}
         </Link>
       );
@@ -110,6 +126,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={combinedStyles}
         disabled={disabled || isLoading}
+        onClick={onClick}
         {...props}
       >
         {content}

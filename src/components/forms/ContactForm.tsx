@@ -5,7 +5,7 @@ import { useForm, type Resolver } from "react-hook-form";
 import { z } from "zod";
 import { cn } from "@/utils/cn";
 import { Button } from "@/components/ui";
-import { CONTACT_INFO } from "@/constants/contact";
+import { WhatsAppButton } from "@/components/buttons";
 
 const ENQUIRY_TYPES = [
   { value: "trial-class", label: "Trial Class" },
@@ -101,12 +101,6 @@ const ContactForm = () => {
     }
   };
 
-  const whatsappHref = CONTACT_INFO.whatsappNumber
-    ? `https://wa.me/${CONTACT_INFO.whatsappNumber}?text=${encodeURIComponent(
-        preparedMessage ?? ""
-      )}`
-    : undefined;
-
   if (preparedMessage) {
     return (
       <div
@@ -123,31 +117,13 @@ const ContactForm = () => {
           in WhatsApp and press Send there yourself.
         </p>
 
-        {whatsappHref ? (
-          <Button
-            variant="whatsapp"
-            size="lg"
-            href={whatsappHref}
-            className="mt-6 w-full sm:w-auto"
-          >
-            Continue to WhatsApp
-          </Button>
-        ) : (
-          <div className="mt-6">
-            <Button
-              variant="whatsapp"
-              size="lg"
-              disabled
-              aria-disabled="true"
-              className="w-full sm:w-auto"
-            >
-              Continue to WhatsApp
-            </Button>
-            <p className="mt-3 text-sm text-text-secondary">
-              Our WhatsApp line is being finalised. Please check back soon.
-            </p>
-          </div>
-        )}
+        <WhatsAppButton
+          size="lg"
+          message={preparedMessage}
+          className="mt-6 w-full sm:w-auto"
+        >
+          Continue to WhatsApp
+        </WhatsAppButton>
 
         <button
           type="button"

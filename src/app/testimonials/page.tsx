@@ -1,5 +1,6 @@
 import { Container, Section, SectionHeading, Button, Card, Reveal } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
+import { CTASection } from "@/components/sections";
 import { TestimonialCard } from "@/components/cards";
 import { TESTIMONIALS, PROGRAMMES } from "@/constants/content";
 import {
@@ -116,35 +117,10 @@ export default function Testimonials() {
       </Section>
 
       {/* Ready to Join CTA Section */}
-      <Section padding="lg" className="bg-gradient-to-r from-orange/5 to-orange/10">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading
-              title="Ready to Start Your Journey?"
-              subtitle="Book a trial class and experience how Budding Voice can help your child build confidence, express themselves and grow."
-            />
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
-              <Button
-                variant="whatsapp"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                Book a Trial Class
-              </Button>
-              <Button
-                variant="whatsapp-outline"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                WhatsApp Us
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CTASection
+        title="Ready to Start Your Journey?"
+        subtitle="Book a trial class and experience how Budding Voice can help your child build confidence, express themselves and grow."
+      />
     </>
   );
 }

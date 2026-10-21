@@ -3,11 +3,11 @@ import {
   Container,
   Section,
   SectionHeading,
-  Button,
   Card,
   Reveal,
 } from "@/components/ui";
 import { HeroSection } from "@/components/hero";
+import { CTASection } from "@/components/sections";
 import { PROGRAMMES } from "@/constants/content";
 import {
   generatePageMetadata,
@@ -73,7 +73,6 @@ export default function KaizenPage() {
         supportingText={programme.description}
         primaryCTAText="Book a Trial Class"
         secondaryCTAText="WhatsApp Us"
-        secondaryCTAHref="https://wa.me/1234567890"
         image={{
           src: "/images/programmes/kaizen-showcase.webp",
           alt: "A young Kaizen student presenting on stage at a showcase",
@@ -191,35 +190,11 @@ export default function KaizenPage() {
       </Section>
 
       {/* Final CTA Section */}
-      <Section padding="lg" alternateBackground>
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <SectionHeading
-              title="Ready to Help Your Child Discover Their Voice?"
-              subtitle="Start with a trial class. Experience Kaizen and see how your child grows."
-            />
-
-            <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-3">
-              <Button
-                variant="whatsapp"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                Book a Trial Class
-              </Button>
-              <Button
-                variant="whatsapp-outline"
-                size="lg"
-                href="https://wa.me/1234567890"
-                className="w-full sm:w-auto"
-              >
-                WhatsApp Us
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <CTASection
+        title="Ready to Help Your Child Discover Their Voice?"
+        subtitle="Start with a trial class. Experience Kaizen and see how your child grows."
+        background="alternate"
+      />
     </>
   );
 }
